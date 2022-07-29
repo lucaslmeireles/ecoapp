@@ -11,16 +11,6 @@ const HomePage = () => {
                 <View style={styles.rectangleView} />
                 <View style={styles.groupView}>
                     <Text style={styles.eCOBANKText}>ECOBANK</Text>
-                    <Image
-                        style={styles.ellipseIcon}
-                        resizeMode="cover"
-                        source={require("../assets/profilePicture.png")}
-                    />
-                    <Image
-                        style={styles.alignJustifyIcon}
-                        resizeMode="cover"
-                        source={require("../assets/alignjustify.png")}
-                    />
                 </View>
             </View>
             <View style={styles.listView}>
@@ -32,11 +22,6 @@ const HomePage = () => {
                     <Text style={styles.aCada1LitroDeLeoUsadoV}>
                         A cada 1 litro de óleo usado você ganha 0,25 EcoPoints
                     </Text>
-                    <Image
-                        style={styles.ellipseIcon1}
-                        resizeMode="cover"
-                        source={require("../assets/ellipse-2.png")}
-                    />
                     <Text style={styles.text}>0,25</Text>
                 </Pressable>
                 <Pressable
@@ -47,11 +32,6 @@ const HomePage = () => {
                     <Text style={styles.aCada1LitroDeLeoUsadoV1}>
                         A cada 1 litro de óleo usado você ganha 0,25 EcoPoints
                     </Text>
-                    <Image
-                        style={styles.ellipseIcon2}
-                        resizeMode="cover"
-                        source={require("../assets/ellipse-2.png")}
-                    />
                     <Text style={styles.text1}>0,25</Text>
                 </Pressable>
                 <Pressable
@@ -62,11 +42,6 @@ const HomePage = () => {
                     <Text style={styles.aCada1LitroDeLeoUsadoV2}>
                         A cada 1 litro de óleo usado você ganha 0,25 EcoPoints
                     </Text>
-                    <Image
-                        style={styles.ellipseIcon3}
-                        resizeMode="cover"
-                        source={require("../assets/ellipse-2.png")}
-                    />
                     <Text style={styles.text2}>0,25</Text>
                 </Pressable>
             </View>
