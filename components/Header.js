@@ -2,19 +2,37 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function Header() {
     return (
-        <Text style={styles.ecobankHeader}>ECOBANK</Text>
+        <View style={styles.headerContainer}>
+        <Text style={styles.textHeader}>ECOBANK</Text>
+        <View style={styles.iconProfile}></View>
+      </View>
+  
     );
 }
 
 const styles = StyleSheet.create({
-    container: {
-        position: 'absolute',
-        width: '360px',
-        height: '67.87px',
-        left: '0px',
-        top: '0px',
-    },
-    ecobankHeader: {
-        color: '#03440C',
-    }
+    headerContainer:{
+        flexDirection: 'row',
+        width: '100%',
+        backgroundColor: '#eee',
+        height: 67,
+        marginTop: 43,
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        shadowColor: 'green'
+    
+      },
+      textHeader:{
+        marginLeft: 25,
+        fontSize: 22,
+        color: '#03440C'
+      },
+      iconProfile:{
+        backgroundColor: '#CCC',
+        height: 45,
+        width: 45,
+        marginRight: 25,
+        borderRadius: 45/2
+      },
+    
 });
