@@ -1,4 +1,4 @@
-import React from "react";
+import React , {useState, useEffect, useCallback}from "react";
 import { StyleSheet, View, Pressable, Text, Image, FlatList, List } from "react-native";
 import { Nunito_400Regular } from "@expo-google-fonts/nunito";
 import * as SplashScreen from 'expo-splash-screen';
@@ -71,6 +71,7 @@ const styles = StyleSheet.create({
         paddingTop: 25,
         paddingHorizontal: 35,
         flex:2 ,
+        fontFamily: 'Nunito_400Regular'
         },
     circleIcon:{
         flex: 1,
