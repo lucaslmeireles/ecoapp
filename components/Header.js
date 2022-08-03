@@ -25,7 +25,8 @@ const styles = StyleSheet.create({
       textHeader:{
         marginLeft: 25,
         fontSize: 22,
-        color: '#03440C'
+        color: '#03440C',
+        fontFamily: 'Nunito_400Regular'
       },
       iconProfile:{
         backgroundColor: '#CCC',
