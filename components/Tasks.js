@@ -44,6 +44,7 @@ export default function Task(){
 
 
     const renderItem = ({ item }) => (
+      // onPress={task title={item.title}}
       <View style={styles.itemFlatList}>
         <Text style={styles.textTask}>{item.title}</Text>
       <View style ={styles.circleIcon}>

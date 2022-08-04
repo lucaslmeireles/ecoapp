@@ -8,6 +8,7 @@ import React , {useState, useEffect, useCallback}from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
+import { TaskDetail } from "./screens/TaskDetail";
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -44,6 +45,11 @@ const App = () => {
           <Stack.Screen
             name="HomePage"
             component={HomePage}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="TaskDetail"
+            component={TaskDetail}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>

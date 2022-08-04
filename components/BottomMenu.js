@@ -1,6 +1,7 @@
 import * as React from "react";
 import { StyleSheet, View, Pressable, Image, Button} from "react-native";
 import { AntDesign } from '@expo/vector-icons'
+import { NavigationEvents } from "react-navigation";
 export function BottomMenu(){
     return(
     <View style={styles.bottomButton}>
@@ -26,8 +27,9 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-around',
         width:'100%',
-        height: 85,
-        borderRadius: 12,
+        height: 65,
+        borderTopLeftRadius: 16,
+        borderTopRightRadius: 16,
       },
       bottomButton1:{
         width:'30%',
