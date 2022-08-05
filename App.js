@@ -2,6 +2,7 @@ const Stack = createNativeStackNavigator();
 import { NavigationContainer } from "@react-navigation/native";
 import HomePage from "./screens/HomePage";
 import { Nunito_200ExtraLight,Nunito_400Regular } from "@expo-google-fonts/nunito";
+import { Jura_600SemiBold } from "@expo-google-fonts/jura";
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import React , {useState, useEffect, useCallback}from "react";
@@ -17,7 +18,7 @@ const App = () => {
     (async () => {
       try {
         await SplashScreen.preventAutoHideAsync();
-        await Font.loadAsync({ Nunito_400Regular });
+        await Font.loadAsync({ Nunito_400Regular, Jura_600SemiBold });
       }
       catch {
         // handle error

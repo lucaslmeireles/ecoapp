@@ -13,8 +13,7 @@ const HomePage = () => {
     <StatusBar></StatusBar>
     <Header></Header>
     <View style={styles.container}>
-      <Task></Task> 
-      <Button title="Teste" onPress={() => navigation.navigate("TaskDetail")}></Button>
+      <Task onPress={() => navigation.navigate("TaskDetail")}></Task> 
       <BottomMenu></BottomMenu>
     </View >
     </>
@@ -26,7 +25,7 @@ const styles = StyleSheet.create({
     display: "flex",
     alignItems: 'center',
     width: '100%',
-    height: '77%',
+    height: '79%',
 
   },
 })

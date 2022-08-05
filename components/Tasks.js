@@ -4,7 +4,7 @@ import { Nunito_400Regular } from "@expo-google-fonts/nunito";
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 
-export default function Task(){
+export default function Task(props){
     const data = [{
         id: '124iufhifu3',
         title: 'Juntos pro quer der e vier pra sempre te amerei ola marilene como voce vai tudo bem contigo e aiaiaiaiaiaiaiaiai',
@@ -45,12 +45,12 @@ export default function Task(){
 
     const renderItem = ({ item }) => (
       // onPress={task title={item.title}}
-      <View style={styles.itemFlatList}>
+    <Pressable onPress={props.onPress} style={styles.itemFlatList}>
         <Text style={styles.textTask}>{item.title}</Text>
-      <View style ={styles.circleIcon}>
-        <Text style={styles.textPoints}>{item.points}</Text>
-      </View>
-    </View>
+        <View style ={styles.circleIcon}>
+          <Text style={styles.textPoints}>{item.points}</Text>
+        </View>
+    </Pressable>
 
       );
     return(

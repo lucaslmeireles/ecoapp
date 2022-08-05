@@ -3,7 +3,7 @@ import { StyleSheet, Text, View } from 'react-native';
 export default function Header() {
     return (
         <View style={styles.headerContainer}>
-        <Text style={styles.textHeader}>ECOBANK</Text>
+        <Text style={styles.textHeader}>ECO</Text>
         <View style={styles.iconProfile}></View>
       </View>
   
@@ -24,9 +24,9 @@ const styles = StyleSheet.create({
       },
       textHeader:{
         marginLeft: 25,
-        fontSize: 22,
+        fontSize: 26,
         color: '#03440C',
-        fontFamily: 'Nunito_400Regular'
+        fontFamily: 'Jura_600SemiBold'
       },
       iconProfile:{
         backgroundColor: '#CCC',

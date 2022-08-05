@@ -8,6 +8,16 @@ import { TextDetails } from "../components/Title";
 import { MapFigure } from "../components/Map";
 
 export function TaskDetail(props){
+    const getData = (id) => {
+        async () => {
+            try {
+                const data = await axios.get(props.id)
+                return data
+            } catch (error) {
+                console.log(error)
+            }
+        }
+    }
     return(
         <>
         <StatusBar></StatusBar>

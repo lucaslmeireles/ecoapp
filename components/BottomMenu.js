@@ -1,11 +1,13 @@
 import * as React from "react";
 import { StyleSheet, View, Pressable, Image, Button} from "react-native";
 import { AntDesign } from '@expo/vector-icons'
-import { NavigationEvents } from "react-navigation";
+import { useNavigation } from "@react-navigation/native";
+
 export function BottomMenu(){
+  const navigation = useNavigation();
     return(
     <View style={styles.bottomButton}>
-      <Pressable style={styles.bottomButton1}>
+      <Pressable onPress={() => navigation.navigate("HomePage")} style={styles.bottomButton1}>
         <View >
           <AntDesign name="home" size={30} color="black" />
         </View>
