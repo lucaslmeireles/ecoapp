@@ -7,36 +7,36 @@ import * as Font from 'expo-font';
 export default function Task(props){
     const data = [{
         id: '124iufhifu3',
-        title: 'Juntos pro quer der e vier pra sempre te amerei ola marilene como voce vai tudo bem contigo e aiaiaiaiaiaiaiaiai',
+        title: 'TESTE',
         points: '1234'
 
       },
       {
         id: '125455',
-        title: 'Juntos pro quer der e vier pra sempre te amerei',
+        title: 'TESTE',
         points: '1234'
       },
       {
         id: '1453',
-        title: 'Juntos pro quer der e vier pra sempre te amerei',
+        title: 'TESTE',
         points: '1234'
 
       },
       {
         id: '534637',
-        title: 'Juntos pro quer der e vier pra sempre te amerei',
+        title: 'TESTE',
         points: '1234'
 
       },
       {
         id: '5345353',
-        title: 'Juntos pro quer der e vier pra sempre te amerei',
+        title: 'TESTE',
         points: '1234'
 
       },
       {
         id: '543453438',
-        title: 'Juntos pro quer der e vier pra sempre te amerei',
+        title: 'TESTE',
         points: '0,25'
 
       },
@@ -66,19 +66,20 @@ const styles = StyleSheet.create({
         display: 'flex',
         flexDirection:"row",
         justifyContent: 'flex-start',
-        backgroundColor: 'red',
+        backgroundColor: 'white',
         width: 350,
         height: 100,
         borderRadius: 15,
         alignItems: 'stretch',
         margin: 25,
         overflow: 'hidden',
+        shadowColor: 'balck',
 
       },
     textTask: {
         fontSize:17,
         margin: 'auto',
-        paddingTop: 14,
+        paddingTop: 25,
         paddingHorizontal: 35,
         flex:2 ,
         fontFamily: 'Nunito_400Regular',
