@@ -1,5 +1,5 @@
 import React , {useState, useEffect, useCallback}from "react";
-import { StyleSheet, View, Pressable, Text, Image, FlatList, List } from "react-native";
+import { StyleSheet, View, Text, Image, FlatList, TouchableOpacity } from "react-native";
 import { Nunito_400Regular } from "@expo-google-fonts/nunito";
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
@@ -45,12 +45,10 @@ export default function Task(props){
 
     const renderItem = ({ item }) => (
       // onPress={task title={item.title}}
-    <Pressable onPress={props.onPress} style={styles.itemFlatList}>
+    <TouchableOpacity onPress={props.onPress} style={styles.itemFlatList}>
         <Text style={styles.textTask}>{item.title}</Text>
-        <View style ={styles.circleIcon}>
-          <Text style={styles.textPoints}>{item.points}</Text>
-        </View>
-    </Pressable>
+        <Image></Image>
+    </TouchableOpacity>
 
       );
     return(
@@ -89,7 +87,6 @@ const styles = StyleSheet.create({
     circleIcon:{
         marginTop: 15,
         marginRight:25,
-        backgroundColor: 'green',
         height: 70,
         width: 70,
         borderRadius: 45,

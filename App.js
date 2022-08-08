@@ -10,6 +10,8 @@ import React , {useState, useEffect, useCallback}from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { TaskDetail } from "./screens/TaskDetail";
+import { UserProfile } from "./screens/UserProfile";
+import { TailwindProvider } from "tailwindcss-react-native";
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -42,6 +44,7 @@ const App = () => {
   return (
     <View onLayout={onLayout} style={{flex:1}}>
     <NavigationContainer>
+    <TailwindProvider>
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
             name="HomePage"
@@ -53,7 +56,14 @@ const App = () => {
             component={TaskDetail}
             options={{ headerShown: false }}
           />
+          <Stack.Screen
+            name="UserProfile"
+            component={UserProfile}
+            options={{ headerShown: false }}
+          />
+
         </Stack.Navigator>
+        </TailwindProvider>
     </NavigationContainer>
     </View>
   );

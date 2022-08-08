@@ -13,7 +13,7 @@ const HomePage = () => {
     <StatusBar></StatusBar>
     <Header></Header>
     <View style={styles.container}>
-      <Task onPress={() => navigation.navigate("TaskDetail")}></Task> 
+      <Task onPress={() => navigation.navigate("UserProfile")} ></Task> 
       <BottomMenu></BottomMenu>
     </View >
     </>
