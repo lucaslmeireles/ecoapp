@@ -12,6 +12,7 @@ import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { TaskDetail } from "./screens/TaskDetail";
 import { UserProfile } from "./screens/UserProfile";
 import { TailwindProvider } from "tailwindcss-react-native";
+import { HomePageNew } from "./screens/HomePageNew";
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -48,7 +49,7 @@ const App = () => {
         <Stack.Navigator screenOptions={{ headerShown: false }}>
           <Stack.Screen
             name="HomePage"
-            component={HomePage}
+            component={HomePageNew}
             options={{ headerShown: false }}
           />
           <Stack.Screen
