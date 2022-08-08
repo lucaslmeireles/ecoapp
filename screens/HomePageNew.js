@@ -69,6 +69,8 @@ export const HomePageNew = () => {
             <View></View>
 
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+                {/* #TODO Escurecer imagens, tirar o roxo do fim da scroll, 
+                #TODO Sera que colocar Recommend embaixo fica legal??? */}
             <TouchableOpacity className='my-3 mx-5'>
                     <Image 
                     source={{uri:'https://cdn.pixabay.com/photo/2017/07/29/13/17/plant-2551467__340.jpg'}}
