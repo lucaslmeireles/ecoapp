@@ -35,7 +35,7 @@ export const HomePageNew = () => {
         </View>
         <View className='mt-4 justify-center items-center'>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-                <TouchableOpacity className='my-3 mx-5 '>
+                <TouchableOpacity className='my-3 mx-5' onPress={() => navigation.navigate('PostDetail')}>
                     <Image 
                     source={{uri:'https://cdn.pixabay.com/photo/2020/11/04/19/22/old-windmill-5713337_960_720.jpg'}}
                     className='w-72 h-72 rounded-3xl '

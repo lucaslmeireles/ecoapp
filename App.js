@@ -1,6 +1,5 @@
 const Stack = createNativeStackNavigator();
 import { NavigationContainer } from "@react-navigation/native";
-import HomePage from "./screens/HomePage";
 import { Nunito_200ExtraLight,Nunito_400Regular } from "@expo-google-fonts/nunito";
 import { Jura_600SemiBold } from "@expo-google-fonts/jura";
 import * as SplashScreen from 'expo-splash-screen';
@@ -9,10 +8,9 @@ import React , {useState, useEffect, useCallback}from "react";
 
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { View, Text, Pressable, TouchableOpacity } from "react-native";
-import { TaskDetail } from "./screens/TaskDetail";
-import { UserProfile } from "./screens/UserProfile";
 import { TailwindProvider } from "tailwindcss-react-native";
 import { HomePageNew } from "./screens/HomePageNew";
+import { PostNew } from "./screens/PostNew";
 
 const App = () => {
   const [appIsReady, setAppIsReady] = useState(false);
@@ -53,16 +51,10 @@ const App = () => {
             options={{ headerShown: false }}
           />
           <Stack.Screen
-            name="TaskDetail"
-            component={TaskDetail}
+            name="PostDetail"
+            component={PostNew}
             options={{ headerShown: false }}
           />
-          <Stack.Screen
-            name="UserProfile"
-            component={UserProfile}
-            options={{ headerShown: false }}
-          />
-
         </Stack.Navigator>
         </TailwindProvider>
     </NavigationContainer>
