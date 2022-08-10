@@ -3,10 +3,15 @@ import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, ScrollView, Tou
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from 'expo-linear-gradient'
+import sanityClient from "../sanity";
 
 export const HomePageNew = () => {
     const navigation = useNavigation();
+    const [featured, setFeatured] = React.useState([])
 
+    React.useEffect(()=>{
+        sanityClient.fetch("")
+    }, [])
     return (
     <>
     <StatusBar backgroundColor="black"></StatusBar>
@@ -31,7 +36,7 @@ export const HomePageNew = () => {
                 <TouchableOpacity className='my-3 mx-5' onPress={() => navigation.navigate('PostDetail')}>
                     <Image 
                     source={{uri:'https://cdn.pixabay.com/photo/2020/11/04/19/22/old-windmill-5713337_960_720.jpg'}}
-                    className='w-64 h-64 rounded-3xl'
+                    className='w-64 h-64 rounded-3xl opacity-95'
                     />
                     <Text className='absolute top-4 mx-4 text-base text-white font-light'>Ecologia</Text>
                     <Text className='absolute top-8 mx-4 my-3 text-xl text-white font-medium'>Impactos ambientais do turismo</Text>
@@ -49,7 +54,7 @@ export const HomePageNew = () => {
                 <TouchableOpacity className='my-3 mx-5'>
                     <Image 
                     source={{uri:'https://cdn.pixabay.com/photo/2015/12/01/20/28/forest-1072828_960_720.jpg'}}
-                    className='w-64 h-64 rounded-3xl'
+                    className='w-64 h-64 rounded-3xl opacity-80'
                     />
                     <Text className='absolute top-4 mx-4 text-base text-white font-light'>Ecologia</Text>
                     <Text className='absolute top-8 mx-4 my-3 text-xl text-white font-medium'>Impactos ambientais do turismo</Text>
@@ -58,7 +63,7 @@ export const HomePageNew = () => {
             </ScrollView>
 
             <View className='justify-start flex-row items-center'>
-                <Text className='text-xl pt-3 mx-3 mt-3 mb-2 text-gray-900'>
+                <Text className='text-xl pt-3 mx-3 mt-3 mb-2 text-gray-900 r-1'>
                     Recommend
                     <View className='rounded-full bg-slate-800 w-2 h-2  align-middle'></View>
                 </Text>
