@@ -1,7 +1,5 @@
 const Stack = createNativeStackNavigator();
 import { NavigationContainer } from "@react-navigation/native";
-import { Nunito_200ExtraLight,Nunito_400Regular } from "@expo-google-fonts/nunito";
-import { Jura_600SemiBold } from "@expo-google-fonts/jura";
 import * as SplashScreen from 'expo-splash-screen';
 import * as Font from 'expo-font';
 import React , {useState, useEffect, useCallback}from "react";
@@ -11,40 +9,15 @@ import { View, Text, Pressable, TouchableOpacity } from "react-native";
 import { TailwindProvider } from "tailwindcss-react-native";
 import { HomePageNew } from "./screens/HomePageNew";
 import { PostNew } from "./screens/PostNew";
+import ProfilePage from "./screens/ProfilePage";
 
 const App = () => {
-  const [appIsReady, setAppIsReady] = useState(false);
 
-  useEffect(() => {
-    (async () => {
-      try {
-        await SplashScreen.preventAutoHideAsync();
-        await Font.loadAsync({ Nunito_400Regular, Jura_600SemiBold });
-      }
-      catch {
-        // handle error
-      }
-      finally {
-        setAppIsReady(true);
-      }
-    })();
-  }, []);
-
-  const onLayout = useCallback(() => {
-    if (appIsReady) {
-      SplashScreen.hideAsync();
-    }
-  }, [appIsReady]);
-
-  if (!appIsReady) {
-    return null;
-
-  }  
   return (
-    <View onLayout={onLayout} style={{flex:1}}>
+    <View style={{flex:1}}>
     <NavigationContainer>
     <TailwindProvider>
-        <Stack.Navigator screenOptions={{ headerShown: false }}>
+        <Stack.Navigator screenOptions={{ headerShown: false, presentation:'modal', animationTypeForReplace:'push'}}>
           <Stack.Screen
             name="HomePage"
             component={HomePageNew}
@@ -53,6 +26,11 @@ const App = () => {
           <Stack.Screen
             name="PostDetail"
             component={PostNew}
+            options={{ headerShown: false }}
+          />
+          <Stack.Screen
+            name="ProfilePage"
+            component={ProfilePage}
             options={{ headerShown: false }}
           />
         </Stack.Navigator>
