@@ -13,7 +13,7 @@ export const PostNew = () => {
     return (
     <>
     <StatusBar backgroundColor="black"></StatusBar>
-    <View style={{marginTop:36}}>
+    <View style={{marginTop:36}} className='bg-gray-100 '>
         <ScrollView >
             {/* Top Header */}
             <View className='mx-5 my-2'>

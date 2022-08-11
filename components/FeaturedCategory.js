@@ -14,6 +14,10 @@ export default function FeaturedCategory({id, name}) {
     <View className='mt-3'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
             <PostCard/>
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
+            <PostCard/>
         </ScrollView>
         </View>
     </>
