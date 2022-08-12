@@ -46,7 +46,13 @@ export default {
       name: 'likes',
       title: 'Like',
       type: 'number'
-    }
+    },
+    {
+      name: 'text',
+      title: 'Text',
+      type: 'string',
+    },
+
   ],
 
 

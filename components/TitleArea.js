@@ -2,13 +2,13 @@ import { View, Text, Image, Pressable } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
 
-export default function TitleArea() {
+export default function TitleArea({title, author, published_at}) {
     const [saved, setSaved] = React.useState(false)
 
   return (
     <>
     <View className='pb-5 mt-6'>
-    <Text className='text-2xl font-medium'>Ecologia a alma de um educador de hora</Text>
+    <Text className='text-2xl font-medium'>{title}</Text>
     </View>
     <View className='justify-between flex-row items-center mt-3 mb-3'>
     <View className='justify-start flex-row'>
@@ -17,8 +17,8 @@ export default function TitleArea() {
         className='rounded-full w-12 h-12 mr-2'
         />
         <View>
-            <Text className='font-normal text-base text-gray-900'>Alissa</Text>
-            <Text className='font-light text-sm text-gray-500'>3 days ago</Text>
+            <Text className='font-normal text-base text-gray-900'>{author}</Text>
+            <Text className='font-light text-sm text-gray-500'>{published_at}</Text>
         </View>
     </View>
     <View className='justify-start flex-row items-center'>

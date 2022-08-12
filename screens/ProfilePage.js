@@ -6,14 +6,17 @@ import PostCard from '../components/PostCard'
 import ProfileCard from '../components/ProfileCard'
 
 export default function ProfilePage() {
+  const navigation = useNavigation();
+
   return (
     <>
-    <StatusBar backgroundColor="black"></StatusBar>
-    <View style={{marginTop:36}}>
-    <View className=' my-2'>
+    <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
+    <View style={{flex:1}}>
     <ScrollView showsVerticalScrollIndicator={false}>
-    <View className=' mx-5 justify-between flex-row pt-3'>
+    <View className=' mx-5 justify-between flex-row pt-3 mt-10'>
+      <Pressable onPress={() => navigation.goBack()}>
         <Feather name='arrow-left' size={29}/>
+      </Pressable>
         <Feather name='edit' size={24}/>
     </View>
     <View className=' mx-5 justify-center items-center mt-20 m-6'>
@@ -59,7 +62,6 @@ export default function ProfilePage() {
         </ScrollView>
         </View>
     </ScrollView>
-    </View>
     </View>
     </>
   )

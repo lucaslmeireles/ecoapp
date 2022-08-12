@@ -6,7 +6,7 @@ export default function TopBar() {
     const navigation = useNavigation();
 
   return (
-    <View className='mt-2 ml-1 flex-row justify-between items-center'>
+    <View className='mt-11 ml-1 flex-row justify-between items-center'>
         <View className='justify-start flex-row items-center mt-3 mx-2'>
             <Pressable onPress={() => navigation.navigate('ProfilePage')}>
                 <Image

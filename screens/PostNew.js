@@ -1,6 +1,6 @@
 import * as React from "react";
 import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, ScrollView, TouchableOpacity, ImageBackground } from "react-native";
-import { useNavigation } from "@react-navigation/native";
+import { useNavigation, useRoute } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import Feather from "@expo/vector-icons/Feather"; 
 import TopPostHeader from "../components/TopPostHeader";
@@ -10,20 +10,31 @@ import PostFooter from "../components/PostFooter";
 
 export const PostNew = () => {
     const navigation = useNavigation();
+    const { params:{
+        id, 
+        category, 
+        title, 
+        imageUrl, 
+        text, 
+        author, 
+        like, 
+        published_at
+    }} = useRoute()
+
     return (
     <>
-    <StatusBar backgroundColor="black"></StatusBar>
-    <View style={{marginTop:36}} className='bg-gray-100 '>
+    <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
+    <View style={{flex:1}} className='bg-gray-100 '>
         <ScrollView >
             {/* Top Header */}
-            <View className='mx-5 my-2'>
+            <View className='mx-5 my-2 mt-10'>
                 <TopPostHeader/>
-                <TitleArea/>
+                <TitleArea title={title} author={author} published_at={published_at}/>
             {/* Text area */}
-                <TextArea/>
+                <TextArea text={text}/>
             </View>
             {/* Footer */}
-            <PostFooter/>
+            <PostFooter likes={like}/>
         </ScrollView>
     </View>
     </>

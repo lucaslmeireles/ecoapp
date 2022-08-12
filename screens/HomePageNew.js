@@ -9,15 +9,37 @@ import FeaturedCategory from "../components/FeaturedCategory";
 
 export const HomePageNew = () => {
     const navigation = useNavigation();
-    const [featured, setFeatured] = React.useState([])
-
+    const [featuredCategories, setFeaturedCategories] = React.useState([])
+    React.useEffect(()=>{
+        sanityClient
+        .fetch(
+          `
+          *[_type == "featured"] {
+            ...,
+            posts[]->{
+                ...
+            }
+          }
+          `  
+        )
+        .then((data) => {
+            setFeaturedCategories(data)
+        })
+        .catch((e)=> e.message)
+    },[])
     return (
     <>
-    <StatusBar backgroundColor="black"></StatusBar>
-    <View style={{marginTop:40,}}>
+    <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
+    <View style={{flex:1}}>
         <TopBar/>
-        <FeaturedCategory name={'Popular'}/>
-        <FeaturedCategory name={'Recommend'}/>
+    {featuredCategories?.map((category)=> {
+        return (<FeaturedCategory
+        key={category._id}
+        id={category._id}
+        name={category.name}/>)
+    })
+    }   
+    <FeaturedCategory></FeaturedCategory>
     </View>
     </>
     )
