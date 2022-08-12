@@ -3,7 +3,7 @@ import React from 'react'
 import PostCard from './PostCard'
 import client, { urlFor } from '../sanity'
 
-export default function FeaturedCategory({name, id}) {
+export default function FeaturedCategory({id, name}) {
     const [posts , setPosts] = React.useState([])
     console.log({id})
     React.useEffect(()=>{
@@ -12,16 +12,19 @@ export default function FeaturedCategory({name, id}) {
             ...,
             posts[]->{
                 ...,
-            categories[]->{
-                title
-            }
+                categories[]->{
+                    title
+                },
+                author->,
+                type->{
+                    name,
+                    }
             
             }
         }[0]
         `, {id})
         .then((data)=>{
             setPosts(data?.posts)
-            
         }
         )
     },[])
@@ -36,18 +39,19 @@ export default function FeaturedCategory({name, id}) {
     <View className='mt-3'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {posts?.map((post) => {
-            console.log(post._id, post.title, post.categories[0].title)
-
+            console.log(post.coverImage)
             return (
                 <PostCard
                 id={post._id}
                 title={post.title}
                 key={post._id}
                 category={post.categories}
-                imageUrl={urlFor(post.coverImage)}
+                imageUrl={post.coverImage}
                 text={post.text}
-                like={post.like}
-                author={post.map((auth) => auth.name)}
+                likes={post.likes}
+                authorName={post.author.name}
+                authorImg={post.author.asset}
+                published_at={post.publishedAt}
                 />
             )
         })}

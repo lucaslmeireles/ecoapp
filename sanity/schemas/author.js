@@ -21,9 +21,6 @@ export default {
       name: 'image',
       title: 'Image',
       type: 'image',
-      options: {
-        hotspot: true,
-      },
     },
     {
       name: 'bio',
@@ -39,10 +36,4 @@ export default {
       ],
     },
   ],
-  preview: {
-    select: {
-      title: 'name',
-      media: 'image',
-    },
-  },
 }

@@ -16,7 +16,8 @@ export const PostNew = () => {
         title, 
         imageUrl, 
         text, 
-        author, 
+        authorName, 
+        authorImg, 
         like, 
         published_at
     }} = useRoute()
@@ -29,7 +30,7 @@ export const PostNew = () => {
             {/* Top Header */}
             <View className='mx-5 my-2 mt-10'>
                 <TopPostHeader/>
-                <TitleArea title={title} author={author} published_at={published_at}/>
+                <TitleArea title={title} authorName={authorName} authorImg={authorImg} published_at={published_at}/>
             {/* Text area */}
                 <TextArea text={text}/>
             </View>

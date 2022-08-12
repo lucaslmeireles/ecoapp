@@ -1,9 +1,10 @@
 import { View, Text, TouchableOpacity, Image } from 'react-native'
 import React from 'react'
 import { useNavigation } from "@react-navigation/native";
+import { urlFor } from '../sanity';
 
 
-export default function PostCard({id, category, title, imageUrl, text, author, like, published_at}) {
+export default function PostCard({id, category, title, imageUrl, text, authorName,authorImg, like, published_at}) {
     const navigation = useNavigation();
   return (
     <View className='flex-row'>
@@ -13,11 +14,14 @@ export default function PostCard({id, category, title, imageUrl, text, author, l
               title, 
               imageUrl, 
               text, 
-              author, 
+              authorName, 
+              authorImg, 
               like, 
               published_at})}>
                 <Image 
-                source={{uri:'https://cdn.pixabay.com/photo/2020/11/04/19/22/old-windmill-5713337_960_720.jpg'}}
+                source={{
+                  uri:'https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241__480.jpg'
+                }}
                 className='w-64 h-64 rounded-3xl opacity-95'
                 />
                 {category.map((category) => {
