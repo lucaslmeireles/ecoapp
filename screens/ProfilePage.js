@@ -1,12 +1,23 @@
-import { View, Text, Image, ScrollView } from 'react-native'
+import { View, Text, Image, ScrollView, Pressable } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { StatusBar } from 'expo-status-bar'
 import PostCard from '../components/PostCard'
 import ProfileCard from '../components/ProfileCard'
+import { useNavigation, useRoute } from '@react-navigation/native'
 
 export default function ProfilePage() {
   const navigation = useNavigation();
+  const {params: {
+    authorName, 
+    authorImg,
+    authorBio,
+    pressed
+  }} = useRoute()
+  function blocksToText(blocks) {
+    return blocks
+      .map(block => block.children.map(child => child.text).join(''))
+  }
 
   return (
     <>
@@ -17,7 +28,7 @@ export default function ProfilePage() {
       <Pressable onPress={() => navigation.goBack()}>
         <Feather name='arrow-left' size={29}/>
       </Pressable>
-        <Feather name='edit' size={24}/>
+      <Feather name='edit' size={24}/>
     </View>
     <View className=' mx-5 justify-center items-center mt-20 m-6'>
         <Image
@@ -25,10 +36,10 @@ export default function ProfilePage() {
                 className='w-44 h-44 mx-1 rounded-full'
         />
         <Text className='text-gray-900 text-xl pt-2'>
-          Alissa Torres
+          {authorName}
         </Text>
         <Text className='text-gray-600 text-base'>
-          Try to e etter
+        {blocksToText(authorBio)}
         </Text>
 
       </View>

@@ -5,7 +5,6 @@ import client, { urlFor } from '../sanity'
 
 export default function FeaturedCategory({id, name}) {
     const [posts , setPosts] = React.useState([])
-    console.log({id})
     React.useEffect(()=>{
         client.fetch(`
         *[_type == "featured" && _id == $id] {
@@ -15,11 +14,12 @@ export default function FeaturedCategory({id, name}) {
                 categories[]->{
                     title
                 },
-                author->,
-                type->{
-                    name,
-                    }
-            
+                author->{
+                  _id,
+                  bio,
+                  image,
+                  name
+                }
             }
         }[0]
         `, {id})
@@ -27,7 +27,7 @@ export default function FeaturedCategory({id, name}) {
             setPosts(data?.posts)
         }
         )
-    },[])
+    },[])      
   return (
     <>
     <View className='flex-row justify-start ml-1'>
@@ -39,18 +39,18 @@ export default function FeaturedCategory({id, name}) {
     <View className='mt-3'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
         {posts?.map((post) => {
-            console.log(post.coverImage)
             return (
                 <PostCard
                 id={post._id}
                 title={post.title}
                 key={post._id}
                 category={post.categories}
-                imageUrl={post.coverImage}
+                imageUrl={post.mainImage}
                 text={post.text}
                 likes={post.likes}
                 authorName={post.author.name}
-                authorImg={post.author.asset}
+                authorImg={post.author.image}
+                authorId = {post.author._id}
                 published_at={post.publishedAt}
                 />
             )

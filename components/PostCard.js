@@ -4,7 +4,7 @@ import { useNavigation } from "@react-navigation/native";
 import { urlFor } from '../sanity';
 
 
-export default function PostCard({id, category, title, imageUrl, text, authorName,authorImg, like, published_at}) {
+export default function PostCard({id, category, title, imageUrl, text, authorName,authorImg, like, published_at, authorId}) {
     const navigation = useNavigation();
   return (
     <View className='flex-row'>
@@ -15,12 +15,13 @@ export default function PostCard({id, category, title, imageUrl, text, authorNam
               imageUrl, 
               text, 
               authorName, 
-              authorImg, 
+              authorImg,
+              authorId, 
               like, 
               published_at})}>
                 <Image 
                 source={{
-                  uri:'https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241__480.jpg'
+                  uri:urlFor(imageUrl).url()
                 }}
                 className='w-64 h-64 rounded-3xl opacity-95'
                 />

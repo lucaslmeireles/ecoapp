@@ -3,8 +3,10 @@ import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { urlFor } from '../sanity'
 import moment from 'moment'
+import { useNavigation } from '@react-navigation/native'
 
 export default function TitleArea({title, authorName, authorImg, published_at}) {
+    const navigation = useNavigation();
     const [saved, setSaved] = React.useState(false)
     const handleDate = () => {
         const dateFomart = Date()
@@ -16,6 +18,12 @@ export default function TitleArea({title, authorName, authorImg, published_at}) 
     </View>
     <View className='justify-between flex-row items-center mt-3 mb-3'>
     <View className='justify-start flex-row'>
+        <Pressable className='flex-row' onPress={()=> navigation.navigate('ProfilePage',{  
+              authorName, 
+              authorImg,
+              authorId,
+              pressed: true
+            })}>
         <Image
         source={{uri:'https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241__480.jpg'}}
         className='rounded-full w-12 h-12 mr-2'
@@ -24,6 +32,7 @@ export default function TitleArea({title, authorName, authorImg, published_at}) 
             <Text className='font-normal text-base text-gray-900'>{authorName}</Text>
             <Text className='font-light text-sm text-gray-500'>{moment(String(published_at, 'YYY-MM-DDTHH:MM:SSZ')).fromNow()}</Text>
         </View>
+        </Pressable>
     </View>
     <View className='justify-start flex-row items-center'>
         <Pressable className='mx-2' onPress={() => setSaved(!saved)}>

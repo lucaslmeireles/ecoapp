@@ -24,8 +24,13 @@ export default {
       to: {type: 'author'},
     },
     {
-      name: 'coverImage',
-      title: 'Cover image',
+      name: 'text',
+      title: 'Text',
+      type: 'blockContent',
+    },
+    {
+      name: 'mainImage',
+      title: 'Main Image',
       type: 'image',
       options: {
         hotspot: true,
@@ -42,16 +47,7 @@ export default {
       title: 'Published at',
       type: 'datetime',
     },
-    {
-      name: 'likes',
-      title: 'Like',
-      type: 'number'
-    },
-    {
-      name: 'text',
-      title: 'Text',
-      type: 'string',
-    },
+
 
   ],
 

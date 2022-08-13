@@ -4,6 +4,6 @@
 
 tasks:
   - init: npm install -g @sanity/cli -g @expo/cli @sanity/image-url
-    command: npm run start
+    command: npm install -g @sanity/cli -g @expo/cli @sanity/image-url && npm run start
 
 

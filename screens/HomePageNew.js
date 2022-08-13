@@ -39,7 +39,6 @@ export const HomePageNew = () => {
         name={category.name}/>)
     })
     }   
-    <FeaturedCategory></FeaturedCategory>
     </View>
     </>
     )
