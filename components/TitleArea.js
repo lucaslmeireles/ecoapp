@@ -5,6 +5,7 @@ import { urlFor } from '../sanity'
 import moment from 'moment'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch } from 'react-redux'
+import * as action from '../features/action'
 
 export default function TitleArea({id, title, authorName, authorImg, published_at, imageUrl, category}) {
     const navigation = useNavigation();
@@ -12,11 +13,24 @@ export default function TitleArea({id, title, authorName, authorImg, published_a
     const [saved, setSaved] = React.useState(false)
 
     const handleDate = (date) => {
-        moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
+        return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
     }
-    const addSavedPost = () =>{
-        dispatch(addSavedPost({id, title, imageUrl, category}))
+    const savePost = () =>{
+        if(!saved) {
+            dispatch(action.addSavedPost({id, title, imageUrl, category}))
+            console.log('ADICIONADO')
+            console.log(saved)
+
+        } else {
+            dispatch(action.removePost({id, title, imageUrl, category}))
+            console.log('REMOVIDO')
+            console.log(saved)
+
+        }
+    }
+    const handleSave = () =>{
         setSaved(!saved)
+        savePost()
     }
   return (
     <>
@@ -37,7 +51,7 @@ export default function TitleArea({id, title, authorName, authorImg, published_a
         </Pressable>
     </View>
     <View className='justify-start flex-row items-center'>
-        <Pressable className='mx-2' onPress={addSavedPost}>
+        <Pressable className='mx-2' onPress={handleSave}>
             <Feather name={saved ? 'heart' : 'bookmark'} size={28} />
         </Pressable>
         <Pressable class='mx-2' >

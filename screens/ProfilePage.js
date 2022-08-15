@@ -7,10 +7,11 @@ import ProfileCard from '../components/ProfileCard'
 import { useNavigation, useRoute } from '@react-navigation/native'
 import { urlFor } from '../sanity'
 import ProfileContent from '../components/ProfileContent'
+import { useSelector } from 'react-redux'
 
 export default function ProfilePage() {
   const navigation = useNavigation();
-
+  const savedPosts = useSelector(state => state.savedPosts)
   return (
     <>
     <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
@@ -35,11 +36,17 @@ export default function ProfilePage() {
         </Text>
       </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
+         {savedPosts.map((post)=> {
+          return (
+            <ProfileCard 
+            key={post.id}
+            id={post.id} 
+            title={post.title} 
+            imageUrl={post.imageUrl} 
+            category={post.category}
+            />
+          )
+         })}
         </ScrollView>
         </View>
         <View className='my-5'>

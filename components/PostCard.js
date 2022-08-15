@@ -27,7 +27,6 @@ export default function PostCard({id, category, title, imageUrl, text, authorNam
                 />
                 {category.map((category) => {
                 return (
-                
                 <Text key={id} className='absolute top-4 mx-4 text-base text-white font-light'>{category.title}</Text>
                 )
               })}

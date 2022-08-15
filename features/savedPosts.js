@@ -1,23 +1,31 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-    savedPosts: []
+  savedPosts:[]
 }
-export const savePost = createSlice({
-  name: 'savePost',
-  initialState,
-  reducers: {
-    addSavedPost: (state, action) => {
-      state.value = [...initialState, action.payload]
-    },
-    removeSavedPost: state => {
-      state.value -= 1
-    },
+
+const savePostsReducer = (state=initialState, action) => {
+  switch(action.type){
+    case 'SAVE_POST':
+      console.log(state)
+      console.log('ADIONADO')
+
+      return {
+        ...state,
+        savedPosts: [...state.savedPosts, action.payload]
+      }
+    case 'REMOVE_POST':
+      console.log(state)
+      console.log('REMOVIDO')
+
+      return{
+        ...state,
+        savedPosts: [
+          ...state.savedPosts.filter((post) => post !== action.payload)
+        ]
+      }
+      default:
+        return state
   }
-})
-
-// Action creators are generated for each case reducer function
-export const { addSavedPost, removeSavedPost } = savedPosts.actions
-export const savedPosts = state => state.savePost.items
-
-export default savePost.reducer
+}
+export default savePostsReducer
