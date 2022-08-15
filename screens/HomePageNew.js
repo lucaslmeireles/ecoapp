@@ -8,6 +8,9 @@ import TopBar from "../components/TopBar";
 import FeaturedCategory from "../components/FeaturedCategory";
 
 export const HomePageNew = () => {
+    const idUnique = () =>{
+        return String(Math.floor(Math.random() * 1000))
+    }
     const navigation = useNavigation();
     const [featuredCategories, setFeaturedCategories] = React.useState([])
     React.useEffect(()=>{
@@ -34,10 +37,11 @@ export const HomePageNew = () => {
         <TopBar/>
     {featuredCategories?.map((category)=> {
         return (<FeaturedCategory
-        key={category._id}
+        key={category._id + idUnique() }
         id={category._id}
         name={category.name}/>)
     })
+
     }   
     </View>
     </>

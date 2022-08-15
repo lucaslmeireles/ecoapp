@@ -3,8 +3,10 @@ import React from 'react'
 import { useNavigation } from "@react-navigation/native";
 
 
-export default function ProfileCard({id, category, title}) {
-    const navigation = useNavigation();
+export default function ProfileCard() {
+  // Sanity client com o id para mandar os dados na route do post details
+  //map com os posts que estão no redux
+  const navigation = useNavigation();
   return (
     <View className='flex-row'>
             <TouchableOpacity className='my-1 mx-3' onPress={() => navigation.navigate('PostDetail')}>

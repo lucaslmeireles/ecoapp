@@ -4,12 +4,19 @@ import { Feather } from '@expo/vector-icons'
 import { urlFor } from '../sanity'
 import moment from 'moment'
 import { useNavigation } from '@react-navigation/native'
+import { useDispatch } from 'react-redux'
 
-export default function TitleArea({title, authorName, authorImg, published_at}) {
+export default function TitleArea({id, title, authorName, authorImg, published_at, imageUrl, category}) {
     const navigation = useNavigation();
+    const dispatch = useDispatch()
     const [saved, setSaved] = React.useState(false)
-    const handleDate = () => {
-        const dateFomart = Date()
+
+    const handleDate = (date) => {
+        moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
+    }
+    const addSavedPost = () =>{
+        dispatch(addSavedPost({id, title, imageUrl, category}))
+        setSaved(!saved)
     }
   return (
     <>
@@ -18,24 +25,19 @@ export default function TitleArea({title, authorName, authorImg, published_at}) 
     </View>
     <View className='justify-between flex-row items-center mt-3 mb-3'>
     <View className='justify-start flex-row'>
-        <Pressable className='flex-row' onPress={()=> navigation.navigate('ProfilePage',{  
-              authorName, 
-              authorImg,
-              authorId,
-              pressed: true
-            })}>
+        <Pressable className='flex-row'>
         <Image
-        source={{uri:'https://cdn.pixabay.com/photo/2017/09/07/08/54/money-2724241__480.jpg'}}
+        source={{uri:urlFor(authorImg).url()}}
         className='rounded-full w-12 h-12 mr-2'
         />
         <View>
             <Text className='font-normal text-base text-gray-900'>{authorName}</Text>
-            <Text className='font-light text-sm text-gray-500'>{moment(String(published_at, 'YYY-MM-DDTHH:MM:SSZ')).fromNow()}</Text>
+            <Text className='font-light text-sm text-gray-500'>{handleDate(published_at)}</Text>
         </View>
         </Pressable>
     </View>
     <View className='justify-start flex-row items-center'>
-        <Pressable className='mx-2' onPress={() => setSaved(!saved)}>
+        <Pressable className='mx-2' onPress={addSavedPost}>
             <Feather name={saved ? 'heart' : 'bookmark'} size={28} />
         </Pressable>
         <Pressable class='mx-2' >

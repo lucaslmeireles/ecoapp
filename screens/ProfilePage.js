@@ -5,44 +5,28 @@ import { StatusBar } from 'expo-status-bar'
 import PostCard from '../components/PostCard'
 import ProfileCard from '../components/ProfileCard'
 import { useNavigation, useRoute } from '@react-navigation/native'
+import { urlFor } from '../sanity'
+import ProfileContent from '../components/ProfileContent'
 
 export default function ProfilePage() {
   const navigation = useNavigation();
-  const {params: {
-    authorName, 
-    authorImg,
-    authorBio,
-    pressed
-  }} = useRoute()
-  function blocksToText(blocks) {
-    return blocks
-      .map(block => block.children.map(child => child.text).join(''))
-  }
 
   return (
     <>
     <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
     <View style={{flex:1}}>
     <ScrollView showsVerticalScrollIndicator={false}>
+      {/* Top Header Profile */}
     <View className=' mx-5 justify-between flex-row pt-3 mt-10'>
       <Pressable onPress={() => navigation.goBack()}>
         <Feather name='arrow-left' size={29}/>
       </Pressable>
       <Feather name='edit' size={24}/>
     </View>
-    <View className=' mx-5 justify-center items-center mt-20 m-6'>
-        <Image
-                source={{uri:'https://media.istockphoto.com/vectors/default-profile-picture-avatar-photo-placeholder-vector-illustration-vector-id1223671392?k=20&m=1223671392&s=612x612&w=0&h=lGpj2vWAI3WUT1JeJWm1PRoHT3V15_1pdcTn2szdwQ0='}}
-                className='w-44 h-44 mx-1 rounded-full'
-        />
-        <Text className='text-gray-900 text-xl pt-2'>
-          {authorName}
-        </Text>
-        <Text className='text-gray-600 text-base'>
-        {blocksToText(authorBio)}
-        </Text>
+    {/* Profile Content */}
+    <ProfileContent/>
 
-      </View>
+    {/* Redux Logic */}
       <View className='my-5'>
         <View className='my-2'>
         <Text className='text-2xl text-gray-900 mx-5'>
@@ -59,6 +43,7 @@ export default function ProfilePage() {
         </ScrollView>
         </View>
         <View className='my-5'>
+
         <View className='my-2'>
             <Text className='text-2xl text-gray-900 mx-5'>
             My  Posts

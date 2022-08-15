@@ -25,6 +25,7 @@ export default function FeaturedCategory({id, name}) {
         `, {id})
         .then((data)=>{
             setPosts(data?.posts)
+            console.log(posts)
         }
         )
     },[])      
@@ -38,6 +39,7 @@ export default function FeaturedCategory({id, name}) {
     </View>
     <View className='mt-3'>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            
         {posts?.map((post) => {
             return (
                 <PostCard

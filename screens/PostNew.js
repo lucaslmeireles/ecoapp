@@ -30,7 +30,7 @@ export const PostNew = () => {
             {/* Top Header */}
             <View className='mx-5 my-2 mt-10'>
                 <TopPostHeader title={title} authorName={authorName}/>
-                <TitleArea title={title} authorName={authorName} authorImg={authorImg} published_at={published_at}/>
+                <TitleArea id={id} imageUrl={imageUrl} category={category} title={title} authorName={authorName} authorImg={authorImg} published_at={published_at}/>
             {/* Text area */}
                 <TextArea text={text}/>
             </View>

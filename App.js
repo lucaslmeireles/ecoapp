@@ -10,12 +10,15 @@ import { TailwindProvider } from "tailwindcss-react-native";
 import { HomePageNew } from "./screens/HomePageNew";
 import { PostNew } from "./screens/PostNew";
 import ProfilePage from "./screens/ProfilePage";
+import { Provider } from "react-redux";
+import store from "./store";
 
 const App = () => {
 
   return (
     <View style={{flex:1}}>
     <NavigationContainer>
+    <Provider store={store}>
     <TailwindProvider>
         <Stack.Navigator screenOptions={{ headerShown: false, presentation:'modal', animationTypeForReplace:'push'}}>
           <Stack.Screen
@@ -35,6 +38,7 @@ const App = () => {
           />
         </Stack.Navigator>
         </TailwindProvider>
+        </Provider>
     </NavigationContainer>
     </View>
   );

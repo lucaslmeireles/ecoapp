@@ -47,6 +47,12 @@ export default {
       title: 'Published at',
       type: 'datetime',
     },
+    {
+      name: 'featuredCategories',
+      title: 'FeaturedCategories',
+      type: 'array',
+      of: [{type: 'reference', to: {type: 'featured'}}],
+    },
 
 
   ],
