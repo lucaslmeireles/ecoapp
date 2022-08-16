@@ -1,35 +1,39 @@
 import { View, Text, Image, Pressable } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 import { urlFor } from '../sanity'
 import moment from 'moment'
 import { useNavigation } from '@react-navigation/native'
-import { useDispatch } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import * as action from '../features/action'
 
 export default function TitleArea({id, title, authorName, authorImg, published_at, imageUrl, category}) {
     const navigation = useNavigation();
     const dispatch = useDispatch()
-    const [saved, setSaved] = React.useState(false)
+    const [saved, setSaved] = useState(false)
+    
+    // const selectIdPost = (state) => state.savedPostsReducer
+    // .savedPostsReducer.savedPosts.filter((post) => post.id === id)
+
+    const savedState = useSelector(state => state.savedPostsReducer.savedPosts.filter((post) => post.id === id))
 
     const handleDate = (date) => {
         return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
     }
     const savePost = () =>{
-        if(!saved) {
-            dispatch(action.addSavedPost({id, title, imageUrl, category}))
-            console.log('ADICIONADO')
-            console.log(saved)
-
-        } else {
-            dispatch(action.removePost({id, title, imageUrl, category}))
-            console.log('REMOVIDO')
-            console.log(saved)
-
-        }
+        if(savedState.saved){
+            dispatch(action.removePost({id}))
+            console.log('removido')
+            setSaved(false)
+        } else{
+            dispatch(action.addSavedPost({id, title, imageUrl, category, saved}))
+            console.log('ADICIONADO', savedState)
+            setSaved(savedState)
+ 
+        }            
     }
+    
     const handleSave = () =>{
-        setSaved(!saved)
         savePost()
     }
   return (

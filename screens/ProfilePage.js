@@ -11,7 +11,8 @@ import { useSelector } from 'react-redux'
 
 export default function ProfilePage() {
   const navigation = useNavigation();
-  const savedPosts = useSelector(state => state.savedPosts)
+  const savedPosts = useSelector(state => state.savedPostsReducer.savedPosts)
+  console.log(savedPosts)
   return (
     <>
     <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
@@ -36,17 +37,14 @@ export default function ProfilePage() {
         </Text>
       </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-         {savedPosts.map((post)=> {
+         {savedPosts.map((post) => {
           return (
-            <ProfileCard 
-            key={post.id}
-            id={post.id} 
-            title={post.title} 
-            imageUrl={post.imageUrl} 
-            category={post.category}
-            />
-          )
-         })}
+          <ProfileCard
+          id={post.id}
+          category={post.category}
+          imageUrl={post.imageUrl}
+          />)
+          })}
         </ScrollView>
         </View>
         <View className='my-5'>
@@ -57,11 +55,6 @@ export default function ProfilePage() {
             </Text>
         </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
-          <ProfileCard></ProfileCard>
         </ScrollView>
         </View>
     </ScrollView>

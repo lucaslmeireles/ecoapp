@@ -1,28 +1,39 @@
 import { createSlice } from '@reduxjs/toolkit'
 
 const initialState = {
-  savedPosts:[]
+  savedPosts:[
+    
+  ],
 }
 
 const savePostsReducer = (state=initialState, action) => {
   switch(action.type){
     case 'SAVE_POST':
-      console.log(state)
-      console.log('ADIONADO')
-
       return {
         ...state,
-        savedPosts: [...state.savedPosts, action.payload]
+        savedPosts: [...state.savedPosts, {
+          id: action.payload.id,
+          title: action.payload.title,
+          imageUrl: action.payload.imageUrl,
+          category: action.payload.category,
+          saved: !action.payload.saved
+        }],
+        
       }
     case 'REMOVE_POST':
-      console.log(state)
-      console.log('REMOVIDO')
+      const index = state.savedPosts.findIndex((post) => post.id !== action.payload.id)
+      let newSavedPost = [...state.savedPosts, !action.saved]
+      console.log(newSavedPost, index)
 
+      if(index >= 0){
+        newSavedPost.splice(index,1)
+      }
       return{
         ...state,
         savedPosts: [
-          ...state.savedPosts.filter((post) => post !== action.payload)
-        ]
+         newSavedPost
+        ],
+        
       }
       default:
         return state
