@@ -22,7 +22,7 @@ const savePostsReducer = (state=initialState, action) => {
       }
     case 'REMOVE_POST':
       const index = state.savedPosts.findIndex((post) => post.id !== action.payload.id)
-      let newSavedPost = [...state.savedPosts, !action.saved]
+      let newSavedPost = [...state.savedPosts]
       console.log(newSavedPost, index)
 
       if(index >= 0){

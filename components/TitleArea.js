@@ -15,26 +15,22 @@ export default function TitleArea({id, title, authorName, authorImg, published_a
     // const selectIdPost = (state) => state.savedPostsReducer
     // .savedPostsReducer.savedPosts.filter((post) => post.id === id)
 
-    const savedState = useSelector(state => state.savedPostsReducer.savedPosts.filter((post) => post.id === id))
+    const savedState = useSelector(state => state)
 
     const handleDate = (date) => {
         return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
     }
-    const savePost = () =>{
-        if(savedState.saved){
-            dispatch(action.removePost({id}))
-            console.log('removido')
-            setSaved(false)
-        } else{
-            dispatch(action.addSavedPost({id, title, imageUrl, category, saved}))
-            console.log('ADICIONADO', savedState)
-            setSaved(savedState)
- 
-        }            
+    const handleRemoveSave = () =>{
+        dispatch(action.removePost({id}))
+        console.log('removido', savedState)
+        setSaved(!saved)
     }
     
-    const handleSave = () =>{
-        savePost()
+    const handleAddSave = () =>{
+        dispatch(action.addSavedPost({id, title, imageUrl, category, saved}))
+        console.log('ADICIONADO',)
+        setSaved(!saved)
+
     }
   return (
     <>
@@ -55,9 +51,14 @@ export default function TitleArea({id, title, authorName, authorImg, published_a
         </Pressable>
     </View>
     <View className='justify-start flex-row items-center'>
-        <Pressable className='mx-2' onPress={handleSave}>
-            <Feather name={saved ? 'heart' : 'bookmark'} size={28} />
+        {saved ? (
+        <Pressable className='mx-2' onPress={handleRemoveSave}>
+        <Feather name={'heart'} size={28} />
         </Pressable>
+    ): (<Pressable className='mx-2' onPress={handleAddSave}>
+        <Feather name={'bookmark'} size={28} />
+       </Pressable>) }
+        
         <Pressable class='mx-2' >
             <Feather name='message-square' size={28}/>
         </Pressable>
