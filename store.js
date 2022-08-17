@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit'
-import savedPostsReducer from './features/savedPosts'
+import savedPostsReducer from './redux/savedPostsReducer'
 
 export default configureStore({
   reducer: {
-    savedPostsReducer
+    savedPosts: savedPostsReducer
   }
 })

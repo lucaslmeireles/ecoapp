@@ -1,36 +1,33 @@
-import { View, Text, Image, Pressable } from 'react-native'
+import { View, Text, Image, Pressable, Button } from 'react-native'
 import React, { useState } from 'react'
 import { Feather } from '@expo/vector-icons'
 import { urlFor } from '../sanity'
 import moment from 'moment'
 import { useNavigation } from '@react-navigation/native'
 import { useDispatch, useSelector } from 'react-redux'
-import * as action from '../features/action'
 
-export default function TitleArea({id, title, authorName, authorImg, published_at, imageUrl, category}) {
+import { addPost, cleanState, deletepost, toggleBookmark} from '../redux/savedPostsReducer'
+
+export default function TitleArea({id, title, authorName, authorImg, published_at, imageUrl, category,authorId, text, likes}) {
     const navigation = useNavigation();
-    const dispatch = useDispatch()
-    const [saved, setSaved] = useState(false)
-    
-    // const selectIdPost = (state) => state.savedPostsReducer
-    // .savedPostsReducer.savedPosts.filter((post) => post.id === id)
-
-    const savedState = useSelector(state => state)
-
+    const dispatch = useDispatch()    
+    const posts = useSelector((state) => state.savedPosts.filter(post => post.id === id))
+    const postsAll = useSelector((state) => state.savedPosts)
+    const post = posts[0] || { saved: false}
     const handleDate = (date) => {
         return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow() 
     }
     const handleRemoveSave = () =>{
-        dispatch(action.removePost({id}))
-        console.log('removido', savedState)
-        setSaved(!saved)
+        dispatch(toggleBookmark({id: id, saved: !post.saved}))
+        dispatch(deletepost({id}))
+        console.log('removido')
+        
     }
     
     const handleAddSave = () =>{
-        dispatch(action.addSavedPost({id, title, imageUrl, category, saved}))
-        console.log('ADICIONADO',)
-        setSaved(!saved)
-
+        dispatch(addPost({id, title, imageUrl, category, authorName, authorImg, published_at, likes , text}))
+        dispatch(toggleBookmark({id: id, saved: !post.saved}))
+        console.log('ADICIONADO')
     }
   return (
     <>
@@ -51,7 +48,7 @@ export default function TitleArea({id, title, authorName, authorImg, published_a
         </Pressable>
     </View>
     <View className='justify-start flex-row items-center'>
-        {saved ? (
+        {post.saved ? (
         <Pressable className='mx-2' onPress={handleRemoveSave}>
         <Feather name={'heart'} size={28} />
         </Pressable>

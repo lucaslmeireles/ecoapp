@@ -1,4 +1,4 @@
-import { View, Text, Image, ScrollView, Pressable } from 'react-native'
+import { View, Text, Image, ScrollView, Pressable, TouchableOpacity } from 'react-native'
 import React from 'react'
 import { Feather } from '@expo/vector-icons'
 import { StatusBar } from 'expo-status-bar'
@@ -11,8 +11,8 @@ import { useSelector } from 'react-redux'
 
 export default function ProfilePage() {
   const navigation = useNavigation();
-  const savedPosts = useSelector(state => state.savedPostsReducer.savedPosts)
-  console.log(savedPosts)
+  const savedPosts = useSelector(state => state.savedPosts)
+
   return (
     <>
     <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
@@ -33,17 +33,21 @@ export default function ProfilePage() {
         <View className='my-2'>
         <Text className='text-2xl text-gray-900 mx-5'>
           Saved Posts
-          <View></View>
         </Text>
       </View>
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
-         {savedPosts.map((post) => {
+         {savedPosts.length > 0  && savedPosts.map((post, i) => {
+          console.log(post)
           return (
-          <ProfileCard
-          id={post.id}
-          category={post.category}
-          imageUrl={post.imageUrl}
-          />)
+            <ProfileCard
+            id={post.id}
+            title={post.title}
+            category={post.category}
+            imageUrl={post.imageUrl}
+            key={i}
+            />
+          )
+          
           })}
         </ScrollView>
         </View>

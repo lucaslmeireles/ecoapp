@@ -35,14 +35,14 @@ export const HomePageNew = () => {
     <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
     <View style={{flex:1}}>
         <TopBar/>
+    <ScrollView>
     {featuredCategories?.map((category)=> {
         return (<FeaturedCategory
         key={category._id + idUnique() }
         id={category._id}
         name={category.name}/>)
-    })
-
-    }   
+    })}   
+    </ScrollView>
     </View>
     </>
     )
