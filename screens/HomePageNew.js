@@ -1,5 +1,5 @@
 import * as React from "react";
-import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, ScrollView, TouchableOpacity } from "react-native";
+import { StyleSheet, View, Text, Image, Pressable, SafeAreaView, ScrollView, TouchableOpacity, Button } from "react-native";
 import { useNavigation } from "@react-navigation/native";
 import { StatusBar } from "expo-status-bar";
 import { LinearGradient } from 'expo-linear-gradient'

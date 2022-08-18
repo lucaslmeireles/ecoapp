@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "286138916909",
+    "project_id": "eco-app-635de",
+    "storage_bucket": "eco-app-635de.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:286138916909:android:de3bee827b9568982dd8a4",
+        "android_client_info": {
+          "package_name": "host.exp.exponent"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "286138916909-h3fc53t458d5905si2o091i2805vheg4.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "host.exp.exponent",
+            "certificate_hash": "811268bb7b837312fc8f4147cbc810b3b9decc0a"
+          }
+        },
+        {
+          "client_id": "286138916909-pse3qpct3ivpgacvdqbguhpovdlp11me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCOzjY6NV7PNlQNt9A6NC6jsRRNE3OAvd4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "286138916909-pse3qpct3ivpgacvdqbguhpovdlp11me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
