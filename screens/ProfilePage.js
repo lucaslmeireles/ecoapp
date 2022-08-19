@@ -20,7 +20,7 @@ export default function ProfilePage() {
     <ScrollView showsVerticalScrollIndicator={false}>
       {/* Top Header Profile */}
     <View className=' mx-5 justify-between flex-row pt-3 mt-10'>
-      <Pressable onPress={() => navigation.goBack()}>
+      <Pressable onPress={() => navigation.navigate('HomePage')}>
         <Feather name='arrow-left' size={29}/>
       </Pressable>
       <Feather name='edit' size={24}/>

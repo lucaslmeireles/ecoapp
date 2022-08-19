@@ -34,7 +34,7 @@ export default function FeaturedCategory({id, name}) {
     <View className='flex-row justify-start ml-1'>
         <Text className='text-xl pt-3 mx-3 text-slate-900 mt-4'>
             {name}
-            <View className='rounded-full bg-slate-800 w-3 h-3 r-2 align-middle'></View>
+            <View className='rounded-full bg-slate-700 w-2 h-2 r-2 align-middle'></View>
         </Text>
     </View>
     <View className='mt-3'>

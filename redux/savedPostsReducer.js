@@ -32,7 +32,16 @@ export const postSlice = createSlice({
 			if(action.payload.clean === 'clean'){
 				state = []
 			}
+		},
+		addLike: (state,action) => {
+			const index = state.findIndex((post) => post.id === action.payload.id);
+			state[index].likes += 1
+		},
+		removeLike: (state,action) => {
+			const index = state.findIndex((post) => post.id === action.payload.id);
+			state[index].likes -= 1
 		}
+
 	},
 });
 
