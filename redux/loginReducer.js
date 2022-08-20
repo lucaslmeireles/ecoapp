@@ -1,20 +1,34 @@
-import { createSlice } from '@reduxjs/toolkit'
+import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
-	name: 'posts',
-	initialState: {},
-	reducers: {
-		loginUser: (state, action) => {
-			const user = {
-			email: action.payload.email,
-			name: action.payload.name,
-			userImage: action.payload.picture,
-      		};
-			state.user = user;
-		},
-	},
+  name: 'login',
+  initialState: { authenticated: false },
+  reducers: {
+    loginUser: (state, action) => {
+      const user = {
+        email: action.payload.email,
+        name: action.payload.name,
+        userImage: action.payload.picture,
+        authenticated: true,
+      };
+      state.user = user;
+    },
+    logoutUser: (state) => {
+      const user = {
+        email: '',
+        name: '',
+        userImage: '',
+        authenticated: false,
+      };
+      state.user = user;
+    },
+    addBio: (state, action) => {
+      const user = { ...state.user, bio: action.payload.bio };
+      state.user = user;
+    },
+  },
 });
 
-export const { loginUser } = loginSlice.actions;
+export const { loginUser, logoutUser, addBio } = loginSlice.actions;
 
 export default loginSlice.reducer;

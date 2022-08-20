@@ -45,7 +45,7 @@ export const PostNew = () => {
             <TextArea text={text} />
           </View>
           {/* Footer */}
-          <PostFooter likes={like} />
+          <PostFooter likes={like} id={id} />
         </ScrollView>
       </View>
     </>

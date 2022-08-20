@@ -1,25 +1,52 @@
-import { View, Text, TouchableOpacity, Image } from 'react-native'
-import React from 'react'
+import { View, Text, TouchableOpacity, Image } from 'react-native';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { addLike, removeLike, toggleLiked } from '../redux/likedPosts';
 
-export default function PostFooter({likes}) {
+export default function PostFooter({ id, likes }) {
+  const dispatch = useDispatch();
+  const posts = useSelector((state) =>
+    state.like.filter((post) => post.id === id),
+  );
+  const post = posts[0] || { liked: false };
+  const handleRemoveLike = () => {
+    dispatch(toggleLiked({ id: id, liked: !post.liked }));
+    dispatch(removeLike({ id }));
+  };
+
+  const handleAddLike = () => {
+    dispatch(
+      addLike({
+        id,
+      }),
+    );
+    dispatch(toggleLiked({ id: id, liked: !post.liked }));
+  };
+
   return (
-    <View className='justify-evenly flex-row my-2 py-4'>
-        <TouchableOpacity className='justify-center mx-4 items-center'>
-            <Image
-            source={{uri:'https://cdn-icons-png.flaticon.com/512/25/25297.png'}}
-            className='w-7 h-7'
-            />
-            <Text className='text-sm text-emerald-600'>{likes}</Text>
+    <View className="justify-center mx-3 flex-row py-4">
+      {post.liked ? (
+        <TouchableOpacity
+          className="justify-center mx-4 items-center"
+          onPress={handleRemoveLike}
+        >
+          <Image
+            source={require('../assets/clappingFull.png')}
+            className="w-8 h-8"
+          />
+          <Text className="text-sm font-light text-gray-600">Curtido!!</Text>
         </TouchableOpacity>
-
-        <TouchableOpacity className='justify-center mx-4  items-center'>
-            <Image
-            source={{uri:'https://cdn-icons-png.flaticon.com/512/25/25297.png'}}
-            className='w-7 h-7'
-            />
-            <Text className='text-sm text-rose-700'>25</Text>
+      ) : (
+        <TouchableOpacity
+          className="justify-center mx-6 items-center py-3"
+          onPress={handleAddLike}
+        >
+          <Image
+            source={require('../assets/clappingOutline.png')}
+            className="w-9 h-9"
+          />
         </TouchableOpacity>
-
-</View>
-)
+      )}
+    </View>
+  );
 }
