@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 
 export default function ProfileCard({ id, imageUrl, category, title }) {
   const posts = useSelector((state) =>
-    state.savedPosts.filter((post) => post.id === id),
+    state.persistedReducer.savedPosts.filter((post) => post.id === id),
   );
   const { text, authorName, authorImg, authorId, like, published_at } =
     posts[0];

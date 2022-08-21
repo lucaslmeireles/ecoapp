@@ -6,8 +6,9 @@ import { useSelector } from 'react-redux';
 export default function TopBar() {
   const navigation = useNavigation();
   //redux persist
-  const { user } = useSelector((state) => state.user);
-  console.log(user);
+  const { user } = useSelector((state) => state.persistedReducer.user) || {
+    authenticated: false,
+  };
   return (
     <View className="mt-14 ml-1 flex-row justify-between mx-3 items-center">
       <Text className=" text-2xl mx-1">Explore</Text>

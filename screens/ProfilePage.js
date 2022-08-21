@@ -12,7 +12,7 @@ import MyPosts from '../components/MyPosts';
 export default function ProfilePage() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
-  const savedPosts = useSelector((state) => state.savedPosts);
+  const savedPosts = useSelector((state) => state.persistedReducer.savedPosts);
   const handleSignOut = () => {
     dispatch(logoutUser());
     navigation.navigate('HomePage');

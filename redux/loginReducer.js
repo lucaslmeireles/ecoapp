@@ -2,7 +2,13 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const loginSlice = createSlice({
   name: 'login',
-  initialState: { authenticated: false },
+  initialState: {
+    authenticated: false,
+    bio: 'bio',
+    email: '',
+    name: '',
+    userImage: '',
+  },
   reducers: {
     loginUser: (state, action) => {
       const user = {

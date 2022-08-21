@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 //IMplementação como sanity para funcionar
 export const likeSlice = createSlice({
   name: 'like',
-  initialState: [],
+  initialState: [null],
   reducers: {
     addLike: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);

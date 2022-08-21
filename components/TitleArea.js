@@ -26,9 +26,8 @@ export default function TitleArea({
 }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) =>
-    state.savedPosts.filter((post) => post.id === id),
+    state.persistedReducer.savedPosts.filter((post) => post.id === id),
   );
-  const postsAll = useSelector((state) => state.savedPosts);
   const post = posts[0] || { saved: false };
   const handleDate = (date) => {
     return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow();

@@ -2,7 +2,7 @@ import { createSlice } from '@reduxjs/toolkit';
 
 export const postSlice = createSlice({
   name: 'posts',
-  initialState: [],
+  initialState: [null],
   reducers: {
     addPost: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);

@@ -13,7 +13,7 @@ export default function ProfileContent() {
     dispatch(addBio(value));
   };
 
-  const { user } = useSelector((state) => state.user);
+  const { user } = useSelector((state) => state.persistedReducer.user);
   return (
     <View className=" mx-5 justify-center items-center mt-20 m-6">
       <Image

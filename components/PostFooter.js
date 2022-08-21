@@ -6,7 +6,7 @@ import { addLike, removeLike, toggleLiked } from '../redux/likedPosts';
 export default function PostFooter({ id, likes }) {
   const dispatch = useDispatch();
   const posts = useSelector((state) =>
-    state.like.filter((post) => post.id === id),
+    state.persistedReducer.like.filter((post) => post.id === id),
   );
   const post = posts[0] || { liked: false };
   const handleRemoveLike = () => {
