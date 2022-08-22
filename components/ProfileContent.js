@@ -25,7 +25,7 @@ export default function ProfileContent() {
         <TextInput
           className="text-gray-600 text-base"
           onChangeText={(text) => onChangeBio(text)}
-          value={bio}
+          value={user.bio || bio}
         />
         <Pressable>
           <Feather name="edit" size={16} color="gray" />

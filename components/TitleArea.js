@@ -24,10 +24,12 @@ export default function TitleArea({
   text,
   likes,
 }) {
+  const navigation = useNavigation();
   const dispatch = useDispatch();
   const posts = useSelector((state) =>
     state.persistedReducer.savedPosts.filter((post) => post.id === id),
   );
+  const { user } = useSelector((state) => state.persistedReducer.user);
   const post = posts[0] || { saved: false };
   const handleDate = (date) => {
     return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow();
@@ -85,8 +87,17 @@ export default function TitleArea({
               <Feather name={'bookmark'} size={28} />
             </Pressable>
           )}
-
-          <Pressable class="mx-2">
+          {/* Colocar condição para  */}
+          <Pressable
+            class="mx-2"
+            onPress={() => {
+              if (user.authenticated) {
+                navigation.navigate('CommentScreen', { id });
+              } else {
+                navigation.navigate('LoginScreen');
+              }
+            }}
+          >
             <Feather name="message-square" size={28} />
           </Pressable>
         </View>

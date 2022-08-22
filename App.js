@@ -7,6 +7,7 @@ import { View } from 'react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
 import { HomePageNew } from './screens/HomePageNew';
 import { PostNew } from './screens/PostNew';
+import CommentSrceen from './screens/CommentSrceen';
 import ProfilePage from './screens/ProfilePage';
 import store, { persistor } from './store';
 import { Provider } from 'react-redux';
@@ -40,6 +41,15 @@ const App = () => {
                   name="ProfilePage"
                   component={ProfilePage}
                   options={{ headerShown: false }}
+                />
+                <Stack.Screen
+                  name="CommentScreen"
+                  component={CommentSrceen}
+                  options={{
+                    headerShown: false,
+                    presentation: 'containedModal',
+                    animation: 'slide_from_bottom',
+                  }}
                 />
                 <Stack.Screen
                   name="LoginScreen"
