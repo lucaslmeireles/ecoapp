@@ -1,5 +1,6 @@
-import { View, Text, Button, TouchableOpacity } from 'react-native';
-import React, { useState } from 'react';
+import { CLIENT_ID_GOOGLE, REDIRECT_URL_GOOGLE } from '@env';
+import { View, Text, TouchableOpacity } from 'react-native';
+import React from 'react';
 import { useNavigation } from '@react-navigation/native';
 import * as AuthSession from 'expo-auth-session';
 import { useDispatch } from 'react-redux';
@@ -11,9 +12,8 @@ export default function LoginScreen() {
   async function handleGoogleSingIn() {
     //ENV Colocar esse dados
     try {
-      const CLIENT_ID =
-        '286138916909-um4d78fr8umntd0nq6rgclpku4eu5m4n.apps.googleusercontent.com';
-      const REDIRECT_URI = 'https://auth.expo.io/@lluciomeireles/Eco';
+      const CLIENT_ID = CLIENT_ID_GOOGLE;
+      const REDIRECT_URI = REDIRECT_URL_GOOGLE;
       const SCOPE = encodeURI('profile email');
       const RESPONSE_TYPE = 'token';
 

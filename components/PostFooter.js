@@ -8,6 +8,7 @@ export default function PostFooter({ id, likes }) {
   const posts = useSelector((state) =>
     state.persistedReducer.like.filter((post) => post.id === id),
   );
+  console.log(likes)
   const post = posts[0] || { liked: false };
   const handleRemoveLike = () => {
     dispatch(toggleLiked({ id: id, liked: !post.liked }));
@@ -18,6 +19,7 @@ export default function PostFooter({ id, likes }) {
     dispatch(
       addLike({
         id,
+        likes,
       }),
     );
     dispatch(toggleLiked({ id: id, liked: !post.liked }));
@@ -34,7 +36,9 @@ export default function PostFooter({ id, likes }) {
             source={require('../assets/clappingFull.png')}
             className="w-8 h-8"
           />
-          <Text className="text-sm font-light text-gray-600">Curtido!!</Text>
+          <Text className="text-sm font-light text-gray-600">
+            {likes}Curtido!!
+          </Text>
         </TouchableOpacity>
       ) : (
         <TouchableOpacity

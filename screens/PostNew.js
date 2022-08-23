@@ -6,6 +6,7 @@ import TopPostHeader from '../components/TopPostHeader';
 import TitleArea from '../components/TitleArea';
 import TextArea from '../components/TextArea';
 import PostFooter from '../components/PostFooter';
+import LoadingScreen from './LoadingScreen';
 
 export const PostNew = () => {
   const {
@@ -21,8 +22,14 @@ export const PostNew = () => {
       published_at,
     },
   } = useRoute();
+  const [loading, setLoading] = React.useState(true);
+  React.useEffect(() => {
+    setLoading(false);
+  });
 
-  return (
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
       <View style={{ flex: 1 }} className="bg-gray-100 ">

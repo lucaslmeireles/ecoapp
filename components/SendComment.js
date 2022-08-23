@@ -1,11 +1,11 @@
-import { View, Text, TextInput, Pressable } from 'react-native';
+import { TextInput, Pressable } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import client from '../sanity';
 export default function SendComment({ id }) {
-  const { control, handleSubmit } = useForm();
+  const { control, handleSubmit, reset } = useForm();
 
   const { user } = useSelector((state) => state.persistedReducer.user);
 
@@ -28,6 +28,7 @@ export default function SendComment({ id }) {
         content: post.coment,
       });
       console.log(post);
+      reset();
     } catch (err) {
       console.log(err);
     }
@@ -44,6 +45,7 @@ export default function SendComment({ id }) {
               value={value}
               placeholder="Escreva seu comentario"
               onChangeText={onChange}
+              style={{ padding: 9 }}
             />
           );
         }}

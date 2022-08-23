@@ -1,15 +1,17 @@
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Button } from 'react-native';
 import { StatusBar } from 'expo-status-bar';
 import sanityClient from '../sanity';
 import TopBar from '../components/TopBar';
 import FeaturedCategory from '../components/FeaturedCategory';
+import LoadingScreen from './LoadingScreen';
 
 export const HomePageNew = () => {
   const idUnique = () => {
     return String(Math.floor(Math.random() * 1000));
   };
   const [featuredCategories, setFeaturedCategories] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
     sanityClient
       .fetch(
@@ -24,10 +26,14 @@ export const HomePageNew = () => {
       )
       .then((data) => {
         setFeaturedCategories(data);
+        setLoading(false);
       })
       .catch((e) => e.message);
-  }, []);
-  return (
+  }, [loading]);
+
+  return loading ? (
+    <LoadingScreen />
+  ) : (
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
       <View style={{ flex: 1 }}>

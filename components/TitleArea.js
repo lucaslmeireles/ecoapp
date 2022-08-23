@@ -1,5 +1,5 @@
-import { View, Text, Image, Pressable, Button } from 'react-native';
-import React, { useState } from 'react';
+import { View, Text, Image, Pressable } from 'react-native';
+import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { urlFor } from '../sanity';
 import moment from 'moment';
@@ -11,6 +11,8 @@ import {
   deletepost,
   toggleBookmark,
 } from '../redux/savedPostsReducer';
+import LoadingScreen from '../screens/LoadingScreen';
+import AppLoading from 'expo-app-loading';
 
 export default function TitleArea({
   id,
@@ -91,7 +93,7 @@ export default function TitleArea({
           <Pressable
             class="mx-2"
             onPress={() => {
-              if (user.authenticated) {
+              if (user?.authenticated || false) {
                 navigation.navigate('CommentScreen', { id });
               } else {
                 navigation.navigate('LoginScreen');
