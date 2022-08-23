@@ -29,7 +29,6 @@ export default function FeaturedCategory({ id, name }) {
       )
       .then((data) => {
         setPosts(data?.posts);
-        console.log(posts);
       });
   }, []);
 

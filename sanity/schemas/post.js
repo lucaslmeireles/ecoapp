@@ -53,6 +53,11 @@ export default {
       type: 'array',
       of: [{type: 'reference', to: {type: 'featured'}}],
     },
+    {
+      name: 'likes',
+      title: 'Likes',
+      type:'number'
+    }
 
 
   ],
