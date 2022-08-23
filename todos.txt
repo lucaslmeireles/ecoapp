@@ -9,3 +9,4 @@ LOGIN REDUCER - FEITO
 STORE USER INFO IN FIREBASE WITH SAVEDPOSTS - FEITO
 LOGIN COM TWITTER APPLE
 WEBHOOK
+Proxy has already been revoked. No more operations are allowed to be performed on it OQUE É ISSSO

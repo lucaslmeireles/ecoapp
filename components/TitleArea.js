@@ -11,8 +11,6 @@ import {
   deletepost,
   toggleBookmark,
 } from '../redux/savedPostsReducer';
-import LoadingScreen from '../screens/LoadingScreen';
-import AppLoading from 'expo-app-loading';
 
 export default function TitleArea({
   id,

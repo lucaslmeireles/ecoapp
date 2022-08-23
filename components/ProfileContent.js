@@ -1,19 +1,18 @@
-import { View, Text, Image, TextInput } from 'react-native';
-import React, { useEffect, useState } from 'react';
+import { View, Text, Image, TextInput, Pressable } from 'react-native';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
-import Pressable from 'react-native/Libraries/Components/Pressable/Pressable';
 import { addBio } from '../redux/loginReducer';
 
 export default function ProfileContent() {
   const dispatch = useDispatch();
-  const [bio, setBio] = useState('');
+
   const onChangeBio = (value) => {
-    setBio(value);
     dispatch(addBio(value));
   };
 
   const { user } = useSelector((state) => state.persistedReducer.user);
+
   return (
     <View className=" mx-5 justify-center items-center mt-20 m-6">
       <Image
@@ -25,7 +24,7 @@ export default function ProfileContent() {
         <TextInput
           className="text-gray-600 text-base"
           onChangeText={(text) => onChangeBio(text)}
-          value={user.bio || bio}
+          value={user.bio || 'bio'}
         />
         <Pressable>
           <Feather name="edit" size={16} color="gray" />

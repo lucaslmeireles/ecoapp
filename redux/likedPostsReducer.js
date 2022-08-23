@@ -7,33 +7,32 @@ export const likeSlice = createSlice({
   reducers: {
     addLike: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);
-      if (index !== -1) {
-        client
-          .patch(action.payload.id)
-          .inc({ likes: 1 })
-          .commit()
-          .then(() => {
-            state[index].likes += 1;
-          })
-          .catch((err) => {
-            console.log(err);
+      // if (index !== -1) {
+      //   client
+      //     .patch(action.payload.id)
+      //     .inc({ likes: 1 })
+      //     .commit()
+      //     .then(() => {
+      //       state[index].likes += 1;
+      //     })
+      //     .catch((err) => {
+      //       console.log(err);
+      //     });
+      // } else {
+      client
+        .patch(action.payload.id)
+        .inc({ likes: 1 })
+        .commit()
+        .then(() => {
+          state.push({
+            id: action.payload.id,
+            liked: action.payload.liked,
+            likes: (action.payload.likes += 1),
           });
-      } else {
-        client
-          .patch(action.payload.id)
-          .inc({ likes: 1 })
-          .commit()
-          .then(() => {
-            state.push({
-              id: action.payload.id,
-              liked: action.payload.liked,
-              likes: (action.payload.likes += 1),
-            });
-          })
-          .catch((err) => {
-            console.log(err);
-          });
-      }
+        })
+        .catch((err) => {
+          console.log(err.message);
+        });
     },
     removeLike: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);

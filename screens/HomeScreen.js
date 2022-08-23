@@ -26,14 +26,11 @@ export const HomeScreen = () => {
       )
       .then((data) => {
         setFeaturedCategories(data);
-        setLoading(false);
       })
       .catch((e) => e.message);
-  }, [loading]);
+  }, []);
 
-  return loading ? (
-    <LoadingScreen />
-  ) : (
+  return (
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
       <View style={{ flex: 1 }}>

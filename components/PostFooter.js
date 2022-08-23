@@ -28,15 +28,15 @@ export default function PostFooter({ id, likes }) {
   };
 
   return (
-    <View className="justify-center mx-3 flex-row pb-8">
+    <View className="justify-start mx-3 flex-row pb-8">
       {post.liked ? (
         <TouchableOpacity
-          className="justify-center mx-4 flex-row items-center"
+          className="mx-4 flex-row items-center"
           onPress={handleRemoveLike}
         >
           <Image
             source={require('../assets/clappingFull.png')}
-            className="w-8 h-8"
+            className="w-9 h-9"
           />
           <Text className="text-sm font-light text-gray-600">
             {handleLiked(likes)} Palmas!!
@@ -44,12 +44,12 @@ export default function PostFooter({ id, likes }) {
         </TouchableOpacity>
       ) : (
         <TouchableOpacity
-          className="justify-center mx-6 items-center"
+          className=" mx-6 items-center"
           onPress={handleAddLike}
         >
           <Image
             source={require('../assets/clappingOutline.png')}
-            className="w-8 h-8"
+            className="w-9 h-9"
           />
         </TouchableOpacity>
       )}

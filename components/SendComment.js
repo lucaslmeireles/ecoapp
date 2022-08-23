@@ -4,6 +4,7 @@ import { Feather } from '@expo/vector-icons';
 import { useForm, Controller } from 'react-hook-form';
 import { useSelector } from 'react-redux';
 import client from '../sanity';
+
 export default function SendComment({ id }) {
   const { control, handleSubmit, reset } = useForm();
 
