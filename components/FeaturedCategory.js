@@ -1,7 +1,7 @@
 import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
 import PostCard from './PostCard';
-import client, { urlFor } from '../sanity';
+import client from '../sanity';
 
 export default function FeaturedCategory({ id, name }) {
   const [posts, setPosts] = React.useState([]);
@@ -43,6 +43,7 @@ export default function FeaturedCategory({ id, name }) {
       <View className="mt-3">
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {posts?.map((post) => {
+            console.log(post.likes);
             return (
               <PostCard
                 id={post._id}

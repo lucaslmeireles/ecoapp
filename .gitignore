@@ -10,7 +10,8 @@ npm-debug.*
 *.orig.*
 web-build/
 .env
-/google-services.json
+.google-services.json
 
 # macOS
 .DS_Store
+.firebase.js

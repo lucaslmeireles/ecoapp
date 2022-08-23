@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { View, ScrollView } from 'react-native';
+import { View, ScrollView, Modal } from 'react-native';
 import { useRoute } from '@react-navigation/native';
 import { StatusBar } from 'expo-status-bar';
 import TopPostHeader from '../components/TopPostHeader';
@@ -8,7 +8,7 @@ import TextArea from '../components/TextArea';
 import PostFooter from '../components/PostFooter';
 import LoadingScreen from './LoadingScreen';
 
-export const PostNew = () => {
+export const PostDetail = () => {
   const {
     params: {
       id,
@@ -18,7 +18,7 @@ export const PostNew = () => {
       text,
       authorName,
       authorImg,
-      like,
+      likes,
       published_at,
     },
   } = useRoute();
@@ -45,14 +45,14 @@ export const PostNew = () => {
               authorName={authorName}
               authorImg={authorImg}
               published_at={published_at}
-              likes={like}
+              likes={likes}
               text={text}
             />
             {/* Text area */}
             <TextArea text={text} />
           </View>
           {/* Footer */}
-          <PostFooter likes={like} id={id} />
+          <PostFooter likes={likes} id={id} />
         </ScrollView>
       </View>
     </>

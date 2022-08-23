@@ -1,5 +1,6 @@
+import './components';
 const teste = {
-    'categories':{"title": "Ecologia"}
-}
+  categories: { title: 'Ecologia' },
+};
 
-console.log(teste.categories.title)
+console.log(teste.categories.title);

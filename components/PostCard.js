@@ -11,7 +11,7 @@ export default function PostCard({
   text,
   authorName,
   authorImg,
-  like,
+  likes,
   published_at,
   authorId,
 }) {
@@ -30,7 +30,7 @@ export default function PostCard({
             authorName,
             authorImg,
             authorId,
-            like,
+            likes,
             published_at,
           })
         }

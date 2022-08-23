@@ -9,7 +9,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { logoutUser } from '../redux/loginReducer';
 import MyPosts from '../components/MyPosts';
 
-export default function ProfilePage() {
+export default function ProfileScreen() {
   const navigation = useNavigation();
   const dispatch = useDispatch();
   const savedPosts = useSelector((state) => state.persistedReducer.savedPosts);
@@ -34,10 +34,13 @@ export default function ProfilePage() {
           {/* Profile Content */}
           <ProfileContent />
 
-          {/* Redux Logic */}
+          {/* Saved Posts */}
           <View className="my-5">
             <View className="my-2">
-              <Text className="text-2xl text-gray-900 mx-5">Saved Posts</Text>
+              <Text className="text-2xl text-gray-900 mx-5">Posts Salvos</Text>
+              <Text className="text-sm text-gray-700 mx-5">
+                Para ler mais tarde
+              </Text>
             </View>
             {savedPosts.length > 0 ? (
               <ScrollView horizontal showsHorizontalScrollIndicator={false}>
@@ -61,7 +64,7 @@ export default function ProfilePage() {
           </View>
           <View className="my-5">
             <View className="my-2">
-              <Text className="text-2xl text-gray-900 mx-5">My Posts</Text>
+              <Text className="text-2xl text-gray-900 mx-5">Meus Posts</Text>
             </View>
             <ScrollView horizontal showsHorizontalScrollIndicator={false}>
               <MyPosts />

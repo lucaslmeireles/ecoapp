@@ -9,7 +9,7 @@ import GestureRecognizer from 'react-native-swipe-gestures';
 import LoadingScreen from './LoadingScreen';
 import { EvilIcons } from '@expo/vector-icons';
 
-export default function CommentSrceen() {
+export default function CommentScreen() {
   const [comments, setComments] = useState([]);
   const navigation = useNavigation();
   const [loading, setLoading] = React.useState(true);
@@ -17,6 +17,7 @@ export default function CommentSrceen() {
   const {
     params: { id },
   } = useRoute();
+  // Fetching data
   React.useEffect(() => {
     client
       .fetch(
@@ -46,7 +47,7 @@ export default function CommentSrceen() {
         <View className="h-1 w-16 mt-11 justify-center algin-middle self-center bg-slate-700"></View>
         <ScrollView className="z-0">
           <View className="mt-7 mx-6 border-b border-b-slate-600 flex-row justify-between ">
-            <Text className="font-semibold text-2xl">Comments</Text>
+            <Text className="font-semibold text-2xl">Comentários</Text>
             <Pressable
               onPress={handleClose}
               className="bg-gray-200 w-9 h-9 align-middle justify-center items-center mb-1 rounded-full"
@@ -66,6 +67,7 @@ export default function CommentSrceen() {
             );
           })}
         </ScrollView>
+        {/* Talvez Trabalhar melhor aqui */}
         <View className="z-50 mb-1 rounded-xl w-96 mx-1 h-10 border flex-row justify-between items-center border-gray-400 bg-gray-200">
           <SendComment id={id} />
         </View>

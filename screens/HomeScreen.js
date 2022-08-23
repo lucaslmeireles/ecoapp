@@ -6,7 +6,7 @@ import TopBar from '../components/TopBar';
 import FeaturedCategory from '../components/FeaturedCategory';
 import LoadingScreen from './LoadingScreen';
 
-export const HomePageNew = () => {
+export const HomeScreen = () => {
   const idUnique = () => {
     return String(Math.floor(Math.random() * 1000));
   };
@@ -37,8 +37,8 @@ export const HomePageNew = () => {
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
       <View style={{ flex: 1 }}>
-        <TopBar />
         <ScrollView>
+          <TopBar />
           {featuredCategories?.map((category) => {
             return (
               <FeaturedCategory

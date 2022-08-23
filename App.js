@@ -4,14 +4,15 @@ import React from 'react';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { View } from 'react-native';
 import { TailwindProvider } from 'tailwindcss-react-native';
-import { HomePageNew } from './screens/HomePageNew';
-import { PostNew } from './screens/PostNew';
-import CommentSrceen from './screens/CommentSrceen';
-import ProfilePage from './screens/ProfilePage';
-import store, { persistor } from './store';
+import { HomeScreen } from './screens/HomeScreen';
+import { PostDetail } from './screens/PostScreen';
+import CommentSrceen from './screens/CommentScreen';
+import ProfileScreen from './screens/ProfileScreen';
+import LoginScreen from './screens/LoginScreen';
+import store, { persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
-import LoginScreen from './screens/LoginScreen';
+
 const App = () => {
   return (
     <View style={{ flex: 1 }}>
@@ -28,17 +29,17 @@ const App = () => {
               >
                 <Stack.Screen
                   name="HomePage"
-                  component={HomePageNew}
+                  component={HomeScreen}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen
                   name="PostDetail"
-                  component={PostNew}
+                  component={PostDetail}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen
                   name="ProfilePage"
-                  component={ProfilePage}
+                  component={ProfileScreen}
                   options={{ headerShown: false }}
                 />
                 <Stack.Screen

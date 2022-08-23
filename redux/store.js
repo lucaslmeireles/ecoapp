@@ -1,7 +1,7 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
-import savedPostsReducer from './redux/savedPostsReducer';
-import loginReducer from './redux/loginReducer';
-import likeSlice from './redux/likedPosts';
+import savedPostsReducer from './savedPostsReducer';
+import loginReducer from './loginReducer';
+import likeReducer from './likedPostsReducer';
 import { persistStore, persistReducer } from 'redux-persist';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import {
@@ -12,6 +12,7 @@ import {
   PURGE,
   REGISTER,
 } from 'redux-persist';
+
 const persistConfig = {
   key: 'root',
   storage: AsyncStorage,
@@ -20,7 +21,7 @@ const persistConfig = {
 const rootReducer = combineReducers({
   savedPosts: savedPostsReducer,
   user: loginReducer,
-  like: likeSlice,
+  like: likeReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
@@ -48,18 +49,4 @@ const store = configureStore({
 });
 export const persistor = persistStore(store);
 
-// export default configureStore({
-//   reducer: {
-//     savedPosts: savedPostsReducer,
-//     user: loginReducer,
-//     like: likeSlice,
-//   },
-//   preloadedState: {
-//     user: {
-//       authenticated: false,
-//       bio: 'bio',
-//     },
-//     savedPosts: [],
-//   },
-// });
 export default store;

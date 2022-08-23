@@ -13,8 +13,8 @@ export default function SendComment({ id }) {
     const post = {
       ...data,
       _id: id,
-      userImage: user?.userImage || 'teste',
-      username: user?.name || 'teste',
+      userImage: user?.userImage,
+      username: user?.name,
     };
     try {
       await client.create({
@@ -27,7 +27,6 @@ export default function SendComment({ id }) {
         image: post.userImage,
         content: post.coment,
       });
-      console.log(post);
       reset();
     } catch (err) {
       console.log(err);
