@@ -7,74 +7,20 @@ export const likeSlice = createSlice({
   reducers: {
     addLike: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);
-      // if (index !== -1) {
-      //   client
-      //     .patch(action.payload.id)
-      //     .inc({ likes: 1 })
-      //     .commit()
-      //     .then(() => {
-      //       state[index].likes += 1;
-      //     })
-      //     .catch((err) => {
-      //       console.log(err);
-      //     });
-      // } else {
-        async () => {try{
-          await client
-          .patch(action.payload.id)
-          .inc({ likes: 1 })
-          .commit()
-  
-        }catch(err){
-          console.log(err.message);
-
-        }finally{
-          state.push({
-            id: action.payload.id,
-            liked: action.payload.liked,
-            likes: (action.payload.likes += 1),
-          })
-      }}
-      /*
-      client
-        .patch(action.payload.id)
-        .inc({ likes: 1 })
-        .commit()
-        .then(() => {
-          state.push({
-            id: action.payload.id,
-            liked: action.payload.liked,
-            likes: (action.payload.likes += 1),
-          });
-        })
-        .catch((err) => {
-          console.log(err.message);
+      if (index !== -1) {
+        state[index].likes += 1;
+      } else {
+        state.push({
+          id: action.payload.id,
+          liked: action.payload.liked,
+          likes: (action.payload.likes += 1),
         });
-        */
+      }
     },
+
     removeLike: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);
-      async () => {
-        try{
-          await client.patch(action.payload.id)
-          .dec({likes:1})
-          .commit()
-        }catch(err) {
-          console.log(err.message)
-        }finally{
-          state[index].likes -= 1
-        }
-      }
-      /*
-      client
-        .patch(action.payload.id)
-        .dec({ likes: 1 })
-        .commit()
-        .then(() => {
-          state[index].likes -= 1;
-        })
-        .catch((err) => {});
-        */
+      state[index].likes -= 1;
     },
     toggleLiked: (state, action) => {
       const index = state.findIndex((post) => post.id === action.payload.id);
