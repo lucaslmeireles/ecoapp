@@ -56,7 +56,8 @@ export default {
     {
       name: 'likes',
       title: 'Likes',
-      type:'number'
+      type:'number',
+      initialValue: 0,
     }
 
 

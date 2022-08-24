@@ -4,7 +4,7 @@ import { StatusBar } from 'expo-status-bar';
 import sanityClient from '../sanity';
 import TopBar from '../components/TopBar';
 import FeaturedCategory from '../components/FeaturedCategory';
-import LoadingScreen from './LoadingScreen';
+import { FadeLoading } from 'react-native-fade-loading';
 
 export const HomeScreen = () => {
   const idUnique = () => {
@@ -26,11 +26,19 @@ export const HomeScreen = () => {
       )
       .then((data) => {
         setFeaturedCategories(data);
+        React.useEffect(() => setLoading(false));
       })
       .catch((e) => e.message);
   }, []);
 
-  return (
+  return loading ? (
+    <FadeLoading
+      primaryColor="gray"
+      secondaryColor="lightgray"
+      duration={5000}
+      visible={loading}
+    />
+  ) : (
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>
       <View style={{ flex: 1 }}>

@@ -23,7 +23,7 @@ export default function ProfileContent() {
       <View className="flex-row items-center justify-around mx-3 space-x-2">
         <TextInput
           className="text-gray-600 text-base"
-          onChangeText={(text) => onChangeBio(text)}
+          onEndEditing={(text) => onChangeBio(text)}
           value={user.bio || 'bio'}
         />
         <Pressable>
