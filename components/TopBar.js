@@ -5,7 +5,6 @@ import { useSelector } from 'react-redux';
 
 export default function TopBar() {
   const navigation = useNavigation();
-  //redux persist
   const { user } = useSelector((state) => state.persistedReducer.user) || {
     authenticated: false,
   };

@@ -1,10 +1,15 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 
 const MyPosts = () => {
+  const navigation = useNavigation();
   return (
-    <TouchableOpacity className="mx-5">
+    <TouchableOpacity
+      className="mx-5"
+      onPress={() => navigation.navigate('MyPostScreen')}
+    >
       <Image
         source={require('../assets/myposts.jpg')}
         className="h-32 w-[360px] rounded-2xl"

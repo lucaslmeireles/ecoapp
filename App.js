@@ -12,6 +12,7 @@ import LoginScreen from './screens/LoginScreen';
 import store, { persistor } from './redux/store';
 import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
+import MyPostScreen from './screens/MyPostScreen';
 
 const App = () => {
   return (
@@ -59,6 +60,15 @@ const App = () => {
                     presentation: 'fullScreenModal',
                     animation: 'slide_from_bottom',
                     animationDuration: 1,
+                  }}
+                />
+                <Stack.Screen
+                  name="MyPostScreen"
+                  component={MyPostScreen}
+                  options={{
+                    headerShown: false,
+                    presentation: 'fullScreenModal',
+                    animation: 'simple_push',
                   }}
                 />
               </Stack.Navigator>

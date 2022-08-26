@@ -1,0 +1,59 @@
+    HOME 
+    // sanityClient
+    //   .fetch(
+    //     `
+    //       *[_type == "featured"] {
+    //         ...,
+    //         posts[]->{
+    //             ...
+    //         }
+    //       }
+    //       `,
+    //   )
+    //   .then((data) => {
+    //     setFeaturedCategories(data);
+    //     setLoading(false);
+    //   })
+    //   .catch((e) => e.message);
+
+    FEAUTURED
+        // client
+    //   .fetch(
+    //     `
+    //     *[_type == "featured" && _id == $id] {
+    //         ...,
+    //         posts[]->{
+    //             ...,
+    //             categories[]->{
+    //                 title
+    //             },
+    //             author->{
+    //               _id,
+    //               bio,
+    //               image,
+    //               name
+    //             }
+    //         }
+    //     }[0]
+    //     `,
+    //     { id },
+    //   )
+    //   .then((data) => {
+    //     setPosts(data?.posts);
+    //   });
+
+    COMMENT
+    // client
+    //   .fetch(
+    //     `
+    //     *[_type == "comment" && post._ref in *[_type=="post" && _id == $id]._id]{
+    //         ...
+    //       }
+    // `,
+    //     { id },
+    //   )
+    //   .then((data) => {
+    //     setComments(data);
+    //     setLoading(false);
+    //   })
+    //   .catch((e) => e.message);

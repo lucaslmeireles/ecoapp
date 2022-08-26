@@ -5,6 +5,7 @@ import sanityClient from '../sanity';
 import TopBar from '../components/TopBar';
 import FeaturedCategory from '../components/FeaturedCategory';
 import { FadeLoading } from 'react-native-fade-loading';
+import fetchDataHome from '../data/fetchDataHome';
 
 export const HomeScreen = () => {
   const idUnique = () => {
@@ -13,22 +14,12 @@ export const HomeScreen = () => {
   const [featuredCategories, setFeaturedCategories] = React.useState([]);
   const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
-    sanityClient
-      .fetch(
-        `
-          *[_type == "featured"] {
-            ...,
-            posts[]->{
-                ...
-            }
-          }
-          `,
-      )
-      .then((data) => {
-        setFeaturedCategories(data);
-        React.useEffect(() => setLoading(false));
-      })
-      .catch((e) => e.message);
+    async function fetchData() {
+      const data = await fetchDataHome();
+      setFeaturedCategories(data);
+      setLoading(false);
+    }
+    fetchData();
   }, []);
 
   return loading ? (
@@ -37,6 +28,7 @@ export const HomeScreen = () => {
       secondaryColor="lightgray"
       duration={5000}
       visible={loading}
+      className="w-9 h-2"
     />
   ) : (
     <>

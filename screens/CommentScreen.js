@@ -4,39 +4,67 @@ import { StatusBar } from 'expo-status-bar';
 import Commentcard from '../components/Commentcard';
 import SendComment from '../components/SendComment';
 import { useNavigation, useRoute } from '@react-navigation/native';
-import client from '../sanity';
 import GestureRecognizer from 'react-native-swipe-gestures';
-import LoadingScreen from './LoadingScreen';
 import { EvilIcons } from '@expo/vector-icons';
+import fetchDataComment from '../data/fetchDataComment';
+import { FadeLoading } from 'react-native-fade-loading';
 
 export default function CommentScreen() {
-  const [comments, setComments] = useState([]);
   const navigation = useNavigation();
+  const [comments, setComments] = useState([]);
   const [loading, setLoading] = React.useState(true);
   const handleClose = () => navigation.goBack();
   const {
     params: { id },
   } = useRoute();
-  // Fetching data
+
   React.useEffect(() => {
-    client
-      .fetch(
-        `
-        *[_type == "comment" && post._ref in *[_type=="post" && _id == $id]._id]{
-            ...
-          }
-    `,
-        { id },
-      )
-      .then((data) => {
-        setComments(data);
-        setLoading(false);
-      })
-      .catch((e) => e.message);
+    async function fetchData() {
+      const data = await fetchDataComment(id);
+      setComments(data);
+      setTimeout(() => setLoading(false), 300);
+    }
+    fetchData();
   }, []);
 
   return loading ? (
-    <LoadingScreen />
+    <>
+      <View className="h-1 w-16 mt-11 justify-center algin-middle self-center bg-slate-700"></View>
+      <ScrollView className="z-0">
+        <View className="mt-7 mx-6 border-b border-b-slate-600 flex-row justify-between ">
+          <Text className="font-semibold text-2xl">Comentários</Text>
+          <Pressable
+            onPress={handleClose}
+            className="bg-gray-200 w-9 h-9 align-middle justify-center items-center mb-1 rounded-full"
+          >
+            <EvilIcons name="close" size={24} color="black" />
+          </Pressable>
+        </View>
+        <View className="flex-row align-middle justify-start ">
+          <FadeLoading
+            primaryColor={'gray'}
+            secondaryColor={'lightgray'}
+            duration={5000}
+            visible={true}
+            className="mt-2 py-3 ml-8 mr-3 w-9 h-9 rounded-full"
+          />
+          <FadeLoading
+            primaryColor={'gray'}
+            secondaryColor={'lightgray'}
+            duration={5000}
+            visible={true}
+            className="mt-2 py-3  w-[60%] h-3 "
+          />
+        </View>
+        <FadeLoading
+          primaryColor={'gray'}
+          secondaryColor={'lightgray'}
+          duration={0}
+          visible={true}
+          className="mt-2 py-3 mx-8"
+        />
+      </ScrollView>
+    </>
   ) : (
     <>
       <StatusBar backgroundColor="rgb(243, 244, 246)"></StatusBar>

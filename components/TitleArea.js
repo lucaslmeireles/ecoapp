@@ -2,7 +2,6 @@ import { View, Text, Image, Pressable } from 'react-native';
 import React from 'react';
 import { Feather } from '@expo/vector-icons';
 import { urlFor } from '../sanity';
-import moment from 'moment';
 import { useNavigation } from '@react-navigation/native';
 import { useDispatch, useSelector } from 'react-redux';
 
@@ -11,6 +10,7 @@ import {
   deletepost,
   toggleBookmark,
 } from '../redux/savedPostsReducer';
+import { handleDate } from '../utils/handleDate';
 
 export default function TitleArea({
   id,
@@ -31,9 +31,6 @@ export default function TitleArea({
   );
   const { user } = useSelector((state) => state.persistedReducer.user);
   const post = posts[0] || { saved: false };
-  const handleDate = (date) => {
-    return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow();
-  };
   const handleRemoveSave = () => {
     dispatch(toggleBookmark({ id: id, saved: !post.saved }));
     dispatch(deletepost({ id }));

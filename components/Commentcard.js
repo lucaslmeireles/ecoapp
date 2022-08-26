@@ -1,11 +1,9 @@
 import { View, Text, Image } from 'react-native';
 import React from 'react';
-import moment from 'moment';
+import { handleDate } from '../utils/handleDate';
 
 const Commentcard = ({ name, text, image, created_at }) => {
-  const handleDate = (date) => {
-    return moment(String(date, 'YYY-MM-DDTHH:MM:SSZ')).fromNow();
-  };
+  handleDate(created_at);
 
   return (
     <View className="mt-2 py-3 mx-8">

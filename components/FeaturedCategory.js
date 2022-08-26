@@ -1,38 +1,34 @@
 import { View, Text, ScrollView } from 'react-native';
 import React from 'react';
 import PostCard from './PostCard';
-import client from '../sanity';
+import fetchDataFeautredcategories from '../data/fetchDataFeauturedCategories';
+import { FadeLoading } from 'react-native-fade-loading';
 
 export default function FeaturedCategory({ id, name }) {
   const [posts, setPosts] = React.useState([]);
+  const [loading, setLoading] = React.useState(true);
   React.useEffect(() => {
-    client
-      .fetch(
-        `
-        *[_type == "featured" && _id == $id] {
-            ...,
-            posts[]->{
-                ...,
-                categories[]->{
-                    title
-                },
-                author->{
-                  _id,
-                  bio,
-                  image,
-                  name
-                }
-            }
-        }[0]
-        `,
-        { id },
-      )
-      .then((data) => {
-        setPosts(data?.posts);
-      });
+    async function fetchData() {
+      const data = await fetchDataFeautredcategories(id);
+      setPosts(data.posts);
+      setTimeout(() => setLoading(false), 300);
+    }
+    fetchData();
   }, []);
 
-  return (
+  return loading ? (
+    <>
+      <View className="flex-row">
+        <FadeLoading
+          primaryColor="lightgray"
+          secondaryColor="lightgray"
+          duration={5000}
+          visible={loading}
+          className="w-64 h-64 my-14 mx-5 rounded-3xl"
+        />
+      </View>
+    </>
+  ) : (
     <>
       <View className="flex-row justify-start ml-1">
         <Text className="text-xl pt-3 mx-3 text-slate-900 mt-4">
@@ -43,7 +39,6 @@ export default function FeaturedCategory({ id, name }) {
       <View className="mt-3">
         <ScrollView horizontal showsHorizontalScrollIndicator={false}>
           {posts?.map((post) => {
-            console.log(post.likes);
             return (
               <PostCard
                 id={post._id}

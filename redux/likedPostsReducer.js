@@ -1,6 +1,4 @@
 import { createSlice } from '@reduxjs/toolkit';
-import client from '../sanity';
-//IMplementação como sanity para funcionar
 export const likeSlice = createSlice({
   name: 'like',
   initialState: [null],

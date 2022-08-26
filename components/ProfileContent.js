@@ -1,5 +1,5 @@
 import { View, Text, Image, TextInput, Pressable } from 'react-native';
-import React, { useState } from 'react';
+import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Feather } from '@expo/vector-icons';
 import { addBio } from '../redux/loginReducer';
@@ -12,11 +12,10 @@ export default function ProfileContent() {
   };
 
   const { user } = useSelector((state) => state.persistedReducer.user);
-
   return (
     <View className=" mx-5 justify-center items-center mt-20 m-6">
       <Image
-        source={{ uri: `${user.userImage}` }}
+        source={{ uri: `${user.userImage.replace('s96-c', 's400')}` }}
         className="w-44 h-44 mx-1 rounded-full"
       />
       <Text className="text-gray-900 text-xl pt-2">{user.name}</Text>
