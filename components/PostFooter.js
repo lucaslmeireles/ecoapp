@@ -28,7 +28,7 @@ export default function PostFooter({ id, likes }) {
     dispatch(toggleLiked({ id: id, liked: !post.liked }));
   };
   const handleLiked = (like) => {
-    return Number(like) + 1;
+    return Number(like);
   };
 
   return (
