@@ -8,7 +8,7 @@ export default function ProfileCard({ id, imageUrl, category, title }) {
   const posts = useSelector((state) =>
     state.persistedReducer.savedPosts.filter((post) => post.id === id),
   );
-  const { text, authorName, authorImg, authorId, like, published_at } =
+  const { text, authorName, authorImg, authorId, likes, published_at } =
     posts[0];
   const navigation = useNavigation();
   return (
@@ -25,7 +25,7 @@ export default function ProfileCard({ id, imageUrl, category, title }) {
             authorName,
             authorImg,
             authorId,
-            like,
+            likes,
             published_at,
           })
         }
